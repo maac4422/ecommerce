@@ -1,0 +1,667 @@
+  [1m[36m (189.5ms)[0m  [1mCREATE TABLE "my_emails" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "ip" varchar, "state" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (129.1ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.2ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (155.2ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36m (0.2ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (145.5ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36m (163.9ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (133.1ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.3ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (144.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160828223949')
+  [1m[36m (133.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160828175131')[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.6ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mMyEmail Load (0.4ms)[0m  [1mSELECT  "my_emails".* FROM "my_emails"  ORDER BY "my_emails"."id" ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "my_emails" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2016-08-28 23:14:34.003055"], ["updated_at", "2016-08-28 23:14:34.003055"]]
+  [1m[35m (0.3ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "my_emails" SET "email" = ?, "updated_at" = ? WHERE "my_emails"."id" = ?  [["email", "an arbitrary value"], ["updated_at", "2016-08-28 23:14:34.014160"], ["id", 1]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mMyEmail Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "my_emails" WHERE "my_emails"."email" IS NULL LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMyEmail Load (0.2ms)[0m  SELECT  "my_emails".* FROM "my_emails"  ORDER BY "my_emails"."id" ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "my_emails" ("created_at", "updated_at") VALUES (?, ?)  [["created_at", "2016-08-28 23:15:11.856615"], ["updated_at", "2016-08-28 23:15:11.856615"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.2ms)[0m  [1mUPDATE "my_emails" SET "email" = ?, "updated_at" = ? WHERE "my_emails"."id" = ?[0m  [["email", "an arbitrary value"], ["updated_at", "2016-08-28 23:15:11.859618"], ["id", 1]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mMyEmail Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "my_emails" WHERE "my_emails"."email" = 'an arbitrary value' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMyEmail Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "my_emails" WHERE "my_emails"."email" IS NULL LIMIT 1[0m
+  [1m[35m (0.6ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMyEmail Load (0.2ms)[0m  SELECT  "my_emails".* FROM "my_emails"  ORDER BY "my_emails"."id" ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "my_emails" ("created_at", "updated_at") VALUES (?, ?)  [["created_at", "2016-08-28 23:16:12.369163"], ["updated_at", "2016-08-28 23:16:12.369163"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "my_emails" SET "email" = ?, "updated_at" = ? WHERE "my_emails"."id" = ?[0m  [["email", "an arbitrary value"], ["updated_at", "2016-08-28 23:16:12.372738"], ["id", 1]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mMyEmail Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "my_emails" WHERE "my_emails"."email" = 'an arbitrary value' LIMIT 1[0m
+  [1m[35mMyEmail Exists (0.1ms)[0m  SELECT  1 AS one FROM "my_emails" WHERE "my_emails"."email" = 'AN ARBITRARY VALUE' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mMyEmail Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "my_emails" WHERE "my_emails"."email" IS NULL LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMyEmail Load (0.2ms)[0m  SELECT  "my_emails".* FROM "my_emails"  ORDER BY "my_emails"."id" ASC LIMIT 1
+  [1m[36m (0.7ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "my_emails" ("created_at", "updated_at") VALUES (?, ?)  [["created_at", "2016-08-29 00:06:59.187277"], ["updated_at", "2016-08-29 00:06:59.187277"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "my_emails" SET "email" = ?, "updated_at" = ? WHERE "my_emails"."id" = ?[0m  [["email", "an arbitrary value"], ["updated_at", "2016-08-29 00:06:59.191176"], ["id", 1]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mMyEmail Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "my_emails" WHERE "my_emails"."email" = 'an arbitrary value' LIMIT 1[0m
+  [1m[35mMyEmail Exists (0.2ms)[0m  SELECT  1 AS one FROM "my_emails" WHERE "my_emails"."email" = 'AN ARBITRARY VALUE' LIMIT 1
+  [1m[36m (0.5ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMyEmail Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "my_emails" WHERE "my_emails"."email" = 'uriel' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMyEmail Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "my_emails" WHERE "my_emails"."email" IS NULL LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMyEmail Load (0.2ms)[0m  SELECT  "my_emails".* FROM "my_emails"  ORDER BY "my_emails"."id" ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "my_emails" ("created_at", "updated_at") VALUES (?, ?)  [["created_at", "2016-08-29 00:08:53.022481"], ["updated_at", "2016-08-29 00:08:53.022481"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "my_emails" SET "email" = ?, "updated_at" = ? WHERE "my_emails"."id" = ?[0m  [["email", "an arbitrary value"], ["updated_at", "2016-08-29 00:08:53.027593"], ["id", 1]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mMyEmail Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "my_emails" WHERE "my_emails"."email" = 'an arbitrary value' LIMIT 1[0m
+  [1m[35mMyEmail Exists (0.5ms)[0m  SELECT  1 AS one FROM "my_emails" WHERE "my_emails"."email" = 'AN ARBITRARY VALUE' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMyEmail Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "my_emails" WHERE "my_emails"."email" = 'uriel' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mMyEmail Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "my_emails" WHERE "my_emails"."email" IS NULL LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mMyEmail Load (0.2ms)[0m  SELECT  "my_emails".* FROM "my_emails"  ORDER BY "my_emails"."id" ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "my_emails" ("created_at", "updated_at") VALUES (?, ?)  [["created_at", "2016-08-29 00:10:53.790404"], ["updated_at", "2016-08-29 00:10:53.790404"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.6ms)[0m  [1mUPDATE "my_emails" SET "email" = ?, "updated_at" = ? WHERE "my_emails"."id" = ?[0m  [["email", "an arbitrary value"], ["updated_at", "2016-08-29 00:10:53.793290"], ["id", 1]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mMyEmail Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "my_emails" WHERE "my_emails"."email" = 'an arbitrary value' LIMIT 1[0m
+  [1m[35mMyEmail Exists (0.2ms)[0m  SELECT  1 AS one FROM "my_emails" WHERE "my_emails"."email" = 'AN ARBITRARY VALUE' LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mMyEmail Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "my_emails" WHERE "my_emails"."email" = 'uriel' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMyEmail Exists (0.2ms)[0m  SELECT  1 AS one FROM "my_emails" WHERE "my_emails"."email" = 'miguel@hotmail.com' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36m (125.8ms)[0m  [1mCREATE TABLE "my_emails" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "ip" varchar, "state" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (99.4ms)[0m  CREATE TABLE "products" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "pricing" decimal(10,2), "description" text, "user_id" integer, "avatar_file_name" varchar, "avatar_content_type" varchar, "avatar_file_size" integer, "avatar_updated_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (112.9ms)[0m  CREATE  INDEX "index_products_on_user_id" ON "products" ("user_id")
+  [1m[36m (119.2ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (144.2ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (121.7ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36m (142.9ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (143.8ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (111.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160829012238')
+  [1m[36m (111.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160828175131')[0m
+  [1m[35m (111.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160828223949')
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by EmailController#create as HTML
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mMyEmail Exists (0.2ms)[0m  SELECT  1 AS one FROM "my_emails" WHERE "my_emails"."email" IS NULL LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 422 Unprocessable Entity in 33ms (Views: 0.3ms | ActiveRecord: 1.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Processing by ProductsController#new as HTML
+  Parameters: {"params"=>{}, "session"=>{}}
+  Rendered products/new.html.haml within layouts/application (0.4ms)
+Completed 200 OK in 10ms (Views: 9.4ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "products"
+Processing by ProductsController#create as HTML
+  Parameters: {"params"=>{"product"=>nil}, "session"=>{}}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by ProductsController#create as HTML
+  Parameters: {"params"=>{"product"=>nil}, "session"=>{}}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by ProductsController#create as HTML
+  Parameters: {"params"=>{"product"=>nil}, "session"=>{}}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mMyEmail Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "my_emails" WHERE "my_emails"."email" IS NULL LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMyEmail Load (0.2ms)[0m  SELECT  "my_emails".* FROM "my_emails"  ORDER BY "my_emails"."id" ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "my_emails" ("created_at", "updated_at") VALUES (?, ?)  [["created_at", "2016-08-29 02:48:05.419684"], ["updated_at", "2016-08-29 02:48:05.419684"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "my_emails" SET "email" = ?, "updated_at" = ? WHERE "my_emails"."id" = ?[0m  [["email", "an arbitrary value"], ["updated_at", "2016-08-29 02:48:05.422130"], ["id", 1]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mMyEmail Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "my_emails" WHERE "my_emails"."email" = 'an arbitrary value' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMyEmail Exists (0.1ms)[0m  SELECT  1 AS one FROM "my_emails" WHERE "my_emails"."email" = 'uriel' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMyEmail Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "my_emails" WHERE "my_emails"."email" = 'miguel@hotmail.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Started GET "/products" for 127.0.0.1 at 2016-08-28 21:48:05 -0500
+Processing by ProductsController#index as HTML
+  [1m[35mProduct Load (0.2ms)[0m  SELECT "products".* FROM "products"
+  Rendered products/index.html.haml within layouts/application (5.6ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.3ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel@hotmail.com' LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "miguel@hotmail.com"], ["encrypted_password", "$2a$04$pjbSAKbCyMmNEHuZt80ahOMCo3pxMJA36TqM8uOw5LlBlTITAy0Xq"], ["created_at", "2016-08-29 02:52:29.908668"], ["updated_at", "2016-08-29 02:52:29.908668"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "products" ("name", "pricing", "description", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "MyString"], ["pricing", 9.99], ["description", "MyText"], ["user_id", 1], ["created_at", "2016-08-29 02:52:29.911999"], ["updated_at", "2016-08-29 02:52:29.911999"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel@hotmail.com' LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "miguel@hotmail.com"], ["encrypted_password", "$2a$04$tf.WdcjJuLFa5ymtbJ.g6euhA/3uCVs20qm9I.U8PF0SxwNO81bVK"], ["created_at", "2016-08-29 02:58:48.417046"], ["updated_at", "2016-08-29 02:58:48.417046"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "products" ("name", "pricing", "description", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "MyString"], ["pricing", 0.0], ["description", "MyText"], ["user_id", 1], ["created_at", "2016-08-29 02:58:48.420216"], ["updated_at", "2016-08-29 02:58:48.420216"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel@hotmail.com' LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "miguel@hotmail.com"], ["encrypted_password", "$2a$04$SLOT7YREkVsK709/Cn/jtuD36CdThEp8UgAqB5ejKKIgkCh04l5rq"], ["created_at", "2016-08-29 02:59:22.139559"], ["updated_at", "2016-08-29 02:59:22.139559"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.3ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel@hotmail.com' LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "miguel@hotmail.com"], ["encrypted_password", "$2a$04$CH/s09TCz8sm/7J00XQaYuxq/UOj1hyXB9.gmAYwb9Nhd1zvIzbfW"], ["created_at", "2016-08-29 03:00:47.007987"], ["updated_at", "2016-08-29 03:00:47.007987"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by EmailController#create as HTML
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mMyEmail Exists (0.2ms)[0m  SELECT  1 AS one FROM "my_emails" WHERE "my_emails"."email" IS NULL LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 422 Unprocessable Entity in 31ms (Views: 0.3ms | ActiveRecord: 0.8ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel@hotmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["email", "miguel@hotmail.com"], ["encrypted_password", "$2a$04$ic8N1EVNZg6NeLZIWGmfyOpIW2PK4g2ohtluGrTX1RS0MkJTljic6"], ["created_at", "2016-08-29 03:10:06.998335"], ["updated_at", "2016-08-29 03:10:06.998335"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "products" ("name", "user_id", "pricing", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Hola Mundo"], ["user_id", 1], ["pricing", 1.0], ["created_at", "2016-08-29 03:10:07.017325"], ["updated_at", "2016-08-29 03:10:07.017325"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel@hotmail.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "miguel@hotmail.com"], ["encrypted_password", "$2a$04$SkYWiBYsFlHp2Xzs539zReill1xDg2w33p/7pUMlPgXp3tq8H1bKq"], ["created_at", "2016-08-29 03:10:07.025368"], ["updated_at", "2016-08-29 03:10:07.025368"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "products" ("name", "user_id", "pricing", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "Hola Mundo"], ["user_id", 1], ["pricing", 1.0], ["created_at", "2016-08-29 03:10:07.027959"], ["updated_at", "2016-08-29 03:10:07.027959"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel@hotmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["email", "miguel@hotmail.com"], ["encrypted_password", "$2a$04$f.0ZpqLR72yOIvTcoODZMuq.g.vpasOB5/R6gwTAMWGl7AsDxeOey"], ["created_at", "2016-08-29 03:10:07.037094"], ["updated_at", "2016-08-29 03:10:07.037094"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "products" ("name", "user_id", "pricing", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Hola Mundo"], ["user_id", 1], ["pricing", 1.0], ["created_at", "2016-08-29 03:10:07.039773"], ["updated_at", "2016-08-29 03:10:07.039773"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "products"[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel@hotmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["email", "miguel@hotmail.com"], ["encrypted_password", "$2a$04$XzLEbJqbZKSZSdO65A89hO7UNyfjNt3hLHSBm0iWbxFSvBtVJmisq"], ["created_at", "2016-08-29 03:10:07.050568"], ["updated_at", "2016-08-29 03:10:07.050568"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel@hotmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["email", "miguel@hotmail.com"], ["encrypted_password", "$2a$04$K9yTwV/8myOnl95WwbmF0O58YL44o.zrmaseufKwNNYD5iWt1J3b."], ["created_at", "2016-08-29 03:10:07.057928"], ["updated_at", "2016-08-29 03:10:07.057928"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel@hotmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["email", "miguel@hotmail.com"], ["encrypted_password", "$2a$04$uthZmZa33PC5TJQJelTMLegL3ZWOLz/2Kxv2bZySLJ6ske5vTEfPC"], ["created_at", "2016-08-29 03:10:07.065303"], ["updated_at", "2016-08-29 03:10:07.065303"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel@hotmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["email", "miguel@hotmail.com"], ["encrypted_password", "$2a$04$1AAbAfMznkcF/xQRmKApWeFkf2X9Dj5src1JehWUJpwsocFhi.0Iq"], ["created_at", "2016-08-29 03:10:07.075356"], ["updated_at", "2016-08-29 03:10:07.075356"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "products" ("name", "user_id", "pricing", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Hola Mundo"], ["user_id", 1], ["pricing", 1.0], ["created_at", "2016-08-29 03:10:07.078130"], ["updated_at", "2016-08-29 03:10:07.078130"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel@hotmail.com' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "miguel@hotmail.com"], ["encrypted_password", "$2a$04$XIGPXLr4SOE57NOddSu8E.vjMHzSMJPe5PJMGf.76hZf8LXv8ZlzS"], ["created_at", "2016-08-29 03:10:07.085281"], ["updated_at", "2016-08-29 03:10:07.085281"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "products" ("name", "user_id", "pricing", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "Hola Mundo"], ["user_id", 1], ["pricing", 1.0], ["created_at", "2016-08-29 03:10:07.087841"], ["updated_at", "2016-08-29 03:10:07.087841"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel@hotmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["email", "miguel@hotmail.com"], ["encrypted_password", "$2a$04$U.3St1YCtUFgy/D30wBZDeHktMZSx6q0tUeZeZ620dbVD2yfVF/R6"], ["created_at", "2016-08-29 03:10:07.095215"], ["updated_at", "2016-08-29 03:10:07.095215"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "products" ("name", "user_id", "pricing", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Hola Mundo"], ["user_id", 1], ["pricing", 1.0], ["created_at", "2016-08-29 03:10:07.098375"], ["updated_at", "2016-08-29 03:10:07.098375"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel@hotmail.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "miguel@hotmail.com"], ["encrypted_password", "$2a$04$Z/WAN1ZuUd8rPj0NW2ah6uvPY1VqKvlwpNo.tZU1KHfiuq6OWfidK"], ["created_at", "2016-08-29 03:10:07.105641"], ["updated_at", "2016-08-29 03:10:07.105641"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "products" ("name", "user_id", "pricing", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "Hola Mundo"], ["user_id", 1], ["pricing", 1.0], ["created_at", "2016-08-29 03:10:07.108041"], ["updated_at", "2016-08-29 03:10:07.108041"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel@hotmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["email", "miguel@hotmail.com"], ["encrypted_password", "$2a$04$ut9mFB23v4llUv126wUZO.y/842xpsFZVXPHPuf8qLDvGrea3Fv/C"], ["created_at", "2016-08-29 03:10:07.115399"], ["updated_at", "2016-08-29 03:10:07.115399"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "products" ("name", "user_id", "pricing", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Hola Mundo"], ["user_id", 1], ["pricing", 1.0], ["created_at", "2016-08-29 03:10:07.117849"], ["updated_at", "2016-08-29 03:10:07.117849"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel@hotmail.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "miguel@hotmail.com"], ["encrypted_password", "$2a$04$8GNfFn6b8jIT/ePRnjlFh.M3WJ5HEOxfQ3OQaoOhd/3BjOn2xF/zu"], ["created_at", "2016-08-29 03:10:07.125516"], ["updated_at", "2016-08-29 03:10:07.125516"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "products" ("name", "user_id", "pricing", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "Hola Mundo"], ["user_id", 1], ["pricing", 1.0], ["created_at", "2016-08-29 03:10:07.128446"], ["updated_at", "2016-08-29 03:10:07.128446"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "products"
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel@hotmail.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "miguel@hotmail.com"], ["encrypted_password", "$2a$04$rm.rAOmp/22ya35vDUcajuNqbZDvtRgooamP2bAbwOzvravcE1zJa"], ["created_at", "2016-08-29 03:10:07.136343"], ["updated_at", "2016-08-29 03:10:07.136343"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "products" ("name", "user_id", "pricing", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "Hola Mundo"], ["user_id", 1], ["pricing", 1.0], ["created_at", "2016-08-29 03:10:07.138834"], ["updated_at", "2016-08-29 03:10:07.138834"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMyEmail Exists (0.2ms)[0m  SELECT  1 AS one FROM "my_emails" WHERE "my_emails"."email" IS NULL LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMyEmail Load (0.2ms)[0m  [1mSELECT  "my_emails".* FROM "my_emails"  ORDER BY "my_emails"."id" ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "my_emails" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2016-08-29 03:10:07.152767"], ["updated_at", "2016-08-29 03:10:07.152767"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "my_emails" SET "email" = ?, "updated_at" = ? WHERE "my_emails"."id" = ?  [["email", "an arbitrary value"], ["updated_at", "2016-08-29 03:10:07.154955"], ["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mMyEmail Exists (0.1ms)[0m  SELECT  1 AS one FROM "my_emails" WHERE "my_emails"."email" = 'an arbitrary value' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMyEmail Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "my_emails" WHERE "my_emails"."email" = 'uriel' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMyEmail Exists (0.1ms)[0m  SELECT  1 AS one FROM "my_emails" WHERE "my_emails"."email" = 'miguel@hotmail.com' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel@hotmail.com' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "miguel@hotmail.com"], ["encrypted_password", "$2a$04$w9e1DCYQiUGy8Tuz8y6dVerju07/.ehLOXHMVKquZi8OSAwXvTUJy"], ["created_at", "2016-08-29 03:10:07.193881"], ["updated_at", "2016-08-29 03:10:07.193881"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Started GET "/products" for 127.0.0.1 at 2016-08-28 22:10:07 -0500
+Processing by ProductsController#index as HTML
+  [1m[36mProduct Load (0.2ms)[0m  [1mSELECT "products".* FROM "products"[0m
+  Rendered products/index.html.haml within layouts/application (6.0ms)
+Completed 200 OK in 10207ms (Views: 10194.7ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  Rendered products/_form.html.haml (8.0ms)
+  Rendered products/new.html.haml (22.7ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel@hotmail.com' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "miguel@hotmail.com"], ["encrypted_password", "$2a$04$ry9nM7H8ZQV8uIc8tsDEDODM9I.KAIVw7jOZaSgeXbGOqesLZlYF6"], ["created_at", "2016-08-29 03:10:40.762099"], ["updated_at", "2016-08-29 03:10:40.762099"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "products" ("name", "user_id", "pricing", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "Hola Mundo"], ["user_id", 1], ["pricing", 1.0], ["created_at", "2016-08-29 03:10:40.779848"], ["updated_at", "2016-08-29 03:10:40.779848"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by ProductsController#index as HTML
+  Parameters: {"params"=>{}}
+  Rendered products/index.html.haml within layouts/application (0.3ms)
+Completed 200 OK in 10ms (Views: 9.0ms | ActiveRecord: 0.0ms)
+  [1m[35mProduct Load (0.2ms)[0m  SELECT "products".* FROM "products"
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel@hotmail.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "miguel@hotmail.com"], ["encrypted_password", "$2a$04$PDWzROSHvJeIQR56lGeSsebLQBW5ivboRO4PsGxVasNhJLPqTATZ2"], ["created_at", "2016-08-29 03:10:40.802100"], ["updated_at", "2016-08-29 03:10:40.802100"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "products" ("name", "user_id", "pricing", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "Hola Mundo"], ["user_id", 1], ["pricing", 1.0], ["created_at", "2016-08-29 03:10:40.804632"], ["updated_at", "2016-08-29 03:10:40.804632"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Processing by ProductsController#new as HTML
+  Parameters: {"params"=>{}}
+  Rendered products/new.html.haml within layouts/application (0.3ms)
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel@hotmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["email", "miguel@hotmail.com"], ["encrypted_password", "$2a$04$/jQIGXwl98DFlLs0t30Pi.vRKXLD4b9XwX4nAIfze4Yj.ZiaNXnhq"], ["created_at", "2016-08-29 03:10:40.817664"], ["updated_at", "2016-08-29 03:10:40.817664"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "products" ("name", "user_id", "pricing", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Hola Mundo"], ["user_id", 1], ["pricing", 1.0], ["created_at", "2016-08-29 03:10:40.820165"], ["updated_at", "2016-08-29 03:10:40.820165"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "products"[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel@hotmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["email", "miguel@hotmail.com"], ["encrypted_password", "$2a$04$yJP527KKxhQpocqQiXQB4.Apj3ADQr07ElniK9GTkmIRfDatxArJ6"], ["created_at", "2016-08-29 03:10:40.831722"], ["updated_at", "2016-08-29 03:10:40.831722"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by ProductsController#create as HTML
+  Parameters: {"params"=>{"product"=>{"name"=>"Hola Mundo", "user"=>"1", "pricing"=>"1.0"}}}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel@hotmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["email", "miguel@hotmail.com"], ["encrypted_password", "$2a$04$O.Zegs3n7U5LorXPRcUaG.AGBOFFfmAnjoRQbZeVcQaTCVnkEQvx6"], ["created_at", "2016-08-29 03:10:40.840971"], ["updated_at", "2016-08-29 03:10:40.840971"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by ProductsController#create as HTML
+  Parameters: {"params"=>{"product"=>{"name"=>"Hola Mundo", "user"=>"1", "pricing"=>"1.0"}}}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel@hotmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["email", "miguel@hotmail.com"], ["encrypted_password", "$2a$04$J0x0bMc1yaGvY/rPlrROseGX/sWOMn.09I/5RDmmcH8LJne/mHEHe"], ["created_at", "2016-08-29 03:10:40.849943"], ["updated_at", "2016-08-29 03:10:40.849943"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by ProductsController#create as HTML
+  Parameters: {"params"=>{"product"=>{"name"=>"Hola Mundo", "user"=>"1", "pricing"=>"1.0"}}}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Processing by ProductsController#create as HTML
+  Parameters: {"params"=>{"product"=>{"name"=>"", "pricing"=>"0"}}}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Processing by ProductsController#create as HTML
+  Parameters: {"params"=>{"product"=>{"name"=>"", "pricing"=>"0"}}}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel@hotmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["email", "miguel@hotmail.com"], ["encrypted_password", "$2a$04$1/vhuStpskjRveAvG/Rzn.QjTb2WIqN2fz2WYcv9AxDQoZTi.yb76"], ["created_at", "2016-08-29 03:10:40.866013"], ["updated_at", "2016-08-29 03:10:40.866013"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "products" ("name", "user_id", "pricing", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Hola Mundo"], ["user_id", 1], ["pricing", 1.0], ["created_at", "2016-08-29 03:10:40.868456"], ["updated_at", "2016-08-29 03:10:40.868456"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel@hotmail.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "miguel@hotmail.com"], ["encrypted_password", "$2a$04$dI89uAzj1p.tnD47/FEReunHbKJIsKTf4YoxS7SIvLFsc0t/mUdHe"], ["created_at", "2016-08-29 03:10:40.875707"], ["updated_at", "2016-08-29 03:10:40.875707"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "products" ("name", "user_id", "pricing", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "Hola Mundo"], ["user_id", 1], ["pricing", 1.0], ["created_at", "2016-08-29 03:10:40.878149"], ["updated_at", "2016-08-29 03:10:40.878149"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel@hotmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["email", "miguel@hotmail.com"], ["encrypted_password", "$2a$04$OLbJmlHhHAXoAiQIo.PL7Ouk.zZPrKrMZG.PvAIIHiT9IZfYoYmq2"], ["created_at", "2016-08-29 03:10:40.885718"], ["updated_at", "2016-08-29 03:10:40.885718"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "products" ("name", "user_id", "pricing", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Hola Mundo"], ["user_id", 1], ["pricing", 1.0], ["created_at", "2016-08-29 03:10:40.888287"], ["updated_at", "2016-08-29 03:10:40.888287"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel@hotmail.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "miguel@hotmail.com"], ["encrypted_password", "$2a$04$hleCvWy4aVfyURwtFvpnQeXH2nkbb270T/LpCB07hsxwwO6wxjfaS"], ["created_at", "2016-08-29 03:10:40.896515"], ["updated_at", "2016-08-29 03:10:40.896515"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "products" ("name", "user_id", "pricing", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "Hola Mundo"], ["user_id", 1], ["pricing", 1.0], ["created_at", "2016-08-29 03:10:40.899013"], ["updated_at", "2016-08-29 03:10:40.899013"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel@hotmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["email", "miguel@hotmail.com"], ["encrypted_password", "$2a$04$Fu/tZ0zquEO44ep.ooikkuMQ7jvp49VfwB1oRpMm/.XN19oEReDrG"], ["created_at", "2016-08-29 03:10:40.907403"], ["updated_at", "2016-08-29 03:10:40.907403"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "products" ("name", "user_id", "pricing", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Hola Mundo"], ["user_id", 1], ["pricing", 1.0], ["created_at", "2016-08-29 03:10:40.910602"], ["updated_at", "2016-08-29 03:10:40.910602"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel@hotmail.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "miguel@hotmail.com"], ["encrypted_password", "$2a$04$a3mOZNubo9mY/ByxPSJdnuIPhiS5dDAmnGlJm5AKpmfkYt5Hs7OLe"], ["created_at", "2016-08-29 03:10:40.920489"], ["updated_at", "2016-08-29 03:10:40.920489"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "products" ("name", "user_id", "pricing", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "Hola Mundo"], ["user_id", 1], ["pricing", 1.0], ["created_at", "2016-08-29 03:10:40.923812"], ["updated_at", "2016-08-29 03:10:40.923812"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "products"
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel@hotmail.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "miguel@hotmail.com"], ["encrypted_password", "$2a$04$UDOtEOcvdMYu5JKd0cmE3OHpqQ5JPdcP9h4ER8q6ng1QnQaxvfpka"], ["created_at", "2016-08-29 03:10:40.932201"], ["updated_at", "2016-08-29 03:10:40.932201"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "products" ("name", "user_id", "pricing", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "Hola Mundo"], ["user_id", 1], ["pricing", 1.0], ["created_at", "2016-08-29 03:10:40.934984"], ["updated_at", "2016-08-29 03:10:40.934984"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction

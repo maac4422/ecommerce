@@ -1,0 +1,9 @@
+I"‡(function() {
+  $(document).on("ajax:beforeSend");
+
+  $(document).on("ajax:success");
+
+  $(document).on("ajax:error");
+
+}).call(this);
+:ET

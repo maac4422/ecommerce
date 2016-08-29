@@ -1,0 +1,9 @@
+I"Æ(function() {
+  $(document).on("ajax:beforeSend", "#emails_form", function() {});
+
+  $(document).on("ajax:success", "#emails_form");
+
+  $(document).on("ajax:error", "#emails_form");
+
+}).call(this);
+:ET

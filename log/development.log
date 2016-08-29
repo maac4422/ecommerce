@@ -1,0 +1,1276 @@
+  [1m[36m (401.8ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.2ms)[0m  select sqlite_version(*)
+  [1m[36m (99.4ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to DeviseCreateUsers (20160828175131)
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.9ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.7ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.4ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+  [1m[36m (0.5ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20160828175131"]]
+  [1m[36m (148.4ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.2ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 12:52:57 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 856ms (Views: 844.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-08-28 12:52:58 -0500
+
+
+Started GET "/assets/welcome.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-08-28 12:52:58 -0500
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2016-08-28 12:52:58 -0500
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-08-28 12:52:58 -0500
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-08-28 12:53:02 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/devise-4.2.0/app/views/devise/shared/_links.html.erb (6.7ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/devise-4.2.0/app/views/devise/sessions/new.html.erb within layouts/application (70.2ms)
+Completed 200 OK in 144ms (Views: 105.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2016-08-28 12:53:05 -0500
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/devise-4.2.0/app/views/devise/shared/_links.html.erb (0.7ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/devise-4.2.0/app/views/devise/registrations/new.html.erb within layouts/application (6.1ms)
+Completed 200 OK in 34ms (Views: 32.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 12:59:01 -0500
+Processing by WelcomeController#unregistered as HTML
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms)
+
+ActionView::MissingTemplate (Missing template welcome/unregistered, application/unregistered with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:erb, :builder, :raw, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/home/miguel/Documents/Proyectos_Ruby/ecommerce/app/views"
+  * "/home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/devise-4.2.0/app/views"
+):
+  actionview (4.2.4) lib/action_view/path_set.rb:46:in `find'
+  actionview (4.2.4) lib/action_view/lookup_context.rb:121:in `find'
+  actionview (4.2.4) lib/action_view/renderer/abstract_renderer.rb:18:in `find_template'
+  actionview (4.2.4) lib/action_view/renderer/template_renderer.rb:40:in `determine_template'
+  actionview (4.2.4) lib/action_view/renderer/template_renderer.rb:8:in `render'
+  actionview (4.2.4) lib/action_view/renderer/renderer.rb:42:in `render_template'
+  actionview (4.2.4) lib/action_view/renderer/renderer.rb:23:in `render'
+  actionview (4.2.4) lib/action_view/rendering.rb:100:in `_render_template'
+  actionpack (4.2.4) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+  actionview (4.2.4) lib/action_view/rendering.rb:83:in `render_to_body'
+  actionpack (4.2.4) lib/action_controller/metal/rendering.rb:32:in `render_to_body'
+  actionpack (4.2.4) lib/action_controller/metal/renderers.rb:37:in `render_to_body'
+  actionpack (4.2.4) lib/abstract_controller/rendering.rb:25:in `render'
+  actionpack (4.2.4) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.2.4) lib/action_controller/metal/instrumentation.rb:44:in `block (2 levels) in render'
+  activesupport (4.2.4) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /home/miguel/.rvm/rubies/ruby-2.3.1/lib/ruby/2.3.0/benchmark.rb:308:in `realtime'
+  activesupport (4.2.4) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.2.4) lib/action_controller/metal/instrumentation.rb:44:in `block in render'
+  actionpack (4.2.4) lib/action_controller/metal/instrumentation.rb:87:in `cleanup_view_runtime'
+  activerecord (4.2.4) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.2.4) lib/action_controller/metal/instrumentation.rb:43:in `render'
+  actionpack (4.2.4) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (4.2.4) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (4.2.4) lib/abstract_controller/base.rb:198:in `process_action'
+  actionpack (4.2.4) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.2.4) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:555:in `block (2 levels) in compile'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:92:in `__run_callbacks__'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:778:in `_run_process_action_callbacks'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.4) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.4) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.4) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.2.4) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.4) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.4) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.4) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.4) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.4) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.4) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.4) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.4) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.2.4) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.4) lib/action_controller/metal.rb:237:in `block in action'
+  actionpack (4.2.4) lib/action_dispatch/routing/route_set.rb:76:in `dispatch'
+  actionpack (4.2.4) lib/action_dispatch/routing/route_set.rb:45:in `serve'
+  actionpack (4.2.4) lib/action_dispatch/routing/mapper.rb:49:in `serve'
+  actionpack (4.2.4) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.4) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.4) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.4) lib/action_dispatch/routing/route_set.rb:821:in `call'
+  warden (1.2.6) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.6) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.6) lib/warden/manager.rb:34:in `call'
+  rack (1.6.4) lib/rack/etag.rb:24:in `call'
+  rack (1.6.4) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.6.4) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.4) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.4) lib/active_record/connection_adapters/abstract/connection_pool.rb:653:in `call'
+  activerecord (4.2.4) lib/active_record/migration.rb:377:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:88:in `__run_callbacks__'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:778:in `_run_call_callbacks'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.4) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.4) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.4) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.4) lib/rails/engine.rb:518:in `call'
+  railties (4.2.4) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /home/miguel/.rvm/rubies/ruby-2.3.1/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /home/miguel/.rvm/rubies/ruby-2.3.1/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /home/miguel/.rvm/rubies/ruby-2.3.1/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (8.9ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.5ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/missing_template.html.erb within rescues/layout (34.9ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.9ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.7ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (26.5ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (55.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 13:00:44 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/application (1.9ms)
+Completed 200 OK in 285ms (Views: 284.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 13:05:04 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/application (2.3ms)
+Completed 200 OK in 4315ms (Views: 4314.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/welcome.self-490e43d70a127d91432b6077e7e09df1b39fd2a0dd6382273c9fc396cebe3af4.css?body=1" for 127.0.0.1 at 2016-08-28 13:05:08 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 13:55:36 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/application (2.2ms)
+Completed 200 OK in 3111ms (Views: 3111.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/bootstrap-material-design/material.self-aa3ea922c2c7d97a85d20f96773eee0ebc1b7d50881ed25f7c267731d9e82875.css?body=1" for 127.0.0.1 at 2016-08-28 13:55:39 -0500
+
+
+Started GET "/assets/bootstrap-material-design/ripples.self-138c042e103000c2c279cbbe8cf30d1c48f18c24b7100658173a02680c73bb1f.css?body=1" for 127.0.0.1 at 2016-08-28 13:55:39 -0500
+
+
+Started GET "/assets/bootstrap-material-design/snackbar.self-7fbc09b4c83aec44967aa4f2b4fbba3c3f62c95560f2a99321af99e72d60664e.css?body=1" for 127.0.0.1 at 2016-08-28 13:55:39 -0500
+
+
+Started GET "/assets/bootstrap-material-design/index.self-f9ecc503685523b804a0f02a2ae501bb190b025b8354ec053661d70988296034.css?body=1" for 127.0.0.1 at 2016-08-28 13:55:39 -0500
+
+
+Started GET "/assets/bootstrap-material-design/material.self-5aae70c7a657f0096b3b64d2f7c073024912d5c525488d25ccfc580590647a69.js?body=1" for 127.0.0.1 at 2016-08-28 13:55:39 -0500
+
+
+Started GET "/assets/bootstrap.self-b38817c3e3a3049abb1fc08dd6ae448b23330f8453226efdb074710209474f75.js?body=1" for 127.0.0.1 at 2016-08-28 13:55:39 -0500
+
+
+Started GET "/assets/application.self-167193cd81d9330d9ddb5c4ec7b44214fea529aa8a94f3a86e6526e4f652fc02.css?body=1" for 127.0.0.1 at 2016-08-28 13:55:39 -0500
+
+
+Started GET "/assets/bootstrap-material-design/jquery.nouislider.self-14a408d2e3a637aad5505ea30dd659b99660f0beac7b100510f6abf6dd67728f.js?body=1" for 127.0.0.1 at 2016-08-28 13:55:39 -0500
+
+
+Started GET "/assets/bootstrap-material-design/ripples.self-568842904f97a152a76ff3ed5995d21aabf5bd56e9f658b9929744dc581778ef.js?body=1" for 127.0.0.1 at 2016-08-28 13:55:39 -0500
+
+
+Started GET "/assets/bootstrap-material-design/snackbar.self-020091f46c96844f46d9e6baa338d932f5cf4c9e998e7fe2136ab5d420d9b0c3.js?body=1" for 127.0.0.1 at 2016-08-28 13:55:39 -0500
+
+
+Started GET "/assets/bootstrap-material-design/index.self-545c38b0922de19734fbffde62792c37c2aef6a3216cfa472449173165220f7d.js?body=1" for 127.0.0.1 at 2016-08-28 13:55:39 -0500
+
+
+Started GET "/assets/application.self-7862a8a8b42407b4741a1adeeea35f0d13ddc4f702ec532adb0674491d296495.js?body=1" for 127.0.0.1 at 2016-08-28 13:55:39 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 14:03:34 -0500
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/application (4.9ms)
+Completed 200 OK in 63ms (Views: 62.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-08-28 14:03:56 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/devise-4.2.0/app/views/devise/shared/_links.html.erb (2.1ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/devise-4.2.0/app/views/devise/sessions/new.html.erb within layouts/application (28.7ms)
+Completed 200 OK in 99ms (Views: 79.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2016-08-28 14:03:58 -0500
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/devise-4.2.0/app/views/devise/shared/_links.html.erb (0.6ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/devise-4.2.0/app/views/devise/registrations/new.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 63ms (Views: 60.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 14:05:10 -0500
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/application (0.4ms)
+Completed 200 OK in 51ms (Views: 50.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 15:43:55 -0500
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/application (1.3ms)
+Completed 200 OK in 392ms (Views: 391.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/app.self-084af9f3589aa19209d6e170b7f901c44cd058ce87d0a7dd75635663dfe495cd.css?body=1" for 127.0.0.1 at 2016-08-28 15:43:56 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 15:46:17 -0500
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/application (1.6ms)
+Completed 200 OK in 129ms (Views: 128.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/app.self-6ffa672a8da7a921333b9afdda9a08518db343ac600bec567715f04af47f1b8b.css?body=1" for 127.0.0.1 at 2016-08-28 15:46:17 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 15:48:25 -0500
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/application (1.6ms)
+Completed 500 Internal Server Error in 43ms (ActiveRecord: 0.0ms)
+
+ActionView::Template::Error (Invalid CSS after "	display": expected ";", was ": inline-block;"):
+    2: <html>
+    3: <head>
+    4:   <title>Ecommerce</title>
+    5:   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    6:   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    7:   <%= csrf_meta_tags %>
+    8: </head>
+  app/assets/stylesheets/app.scss:76
+  app/views/layouts/application.html.erb:5:in `_app_views_layouts_application_html_erb__4424343503384451098_70254276485140'
+
+
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (13.3ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.9ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (41.9ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (1.2ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.8ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (28.3ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (56.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 15:48:37 -0500
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/application (0.1ms)
+Completed 200 OK in 133ms (Views: 133.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/app.self-5e5c22469c0b17081ec7bc7fabdeeb011d7e25fee657d177485027865707cf0b.css?body=1" for 127.0.0.1 at 2016-08-28 15:48:37 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 15:51:43 -0500
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/application (268.3ms)
+Completed 200 OK in 370ms (Views: 369.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/app.self-ef163c6a2a352a932230387ba4f617639f083535dc8a04bd144a271d004590c7.css?body=1" for 127.0.0.1 at 2016-08-28 15:51:44 -0500
+
+
+Started GET "/assets/tiendus-2fa14951f8e36d63a662021b41f48fc555a7e88aa247061b97b14b0b070476c7.png" for 127.0.0.1 at 2016-08-28 15:51:44 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 15:52:05 -0500
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/application (5.7ms)
+Completed 200 OK in 62ms (Views: 62.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/mono-4be47b33f356e652f8502fccff79d5ee9aafaff2ac4608b4485490a38ed85f62.png" for 127.0.0.1 at 2016-08-28 15:52:05 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 15:52:52 -0500
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/application (3.5ms)
+Completed 200 OK in 138ms (Views: 137.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/app.self-9a508d1fba6cfadbe229786ff541dea33df562b777d4b11c89a58a2411ce1f3b.css?body=1" for 127.0.0.1 at 2016-08-28 15:52:52 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 16:20:10 -0500
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/landing (2.3ms)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.0ms)
+
+ActionView::Template::Error (Inconsistent indentation: "  \t\t" used for indentation, but the rest of the document was indented using 1 tab.):
+    1: !!! 5
+    2: %html
+    3: 	%head
+    4:   		%title Ecommerce
+    5: 		= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    6: 		= javascript_include_tag 'application', 'data-turbolinks-track' => true
+    7: 		= csrf_meta_tags
+  app/views/layouts/landing.haml:4
+  app/controllers/welcome_controller.rb:6:in `unregistered'
+
+
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (9.8ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.9ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (36.6ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.9ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.8ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (26.6ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (53.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 16:20:30 -0500
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/landing (2.4ms)
+Completed 500 Internal Server Error in 57ms (ActiveRecord: 0.0ms)
+
+ActionView::Template::Error (undefined method `nil' for nil:NilClass
+Did you mean?  nil?):
+     7: 		= csrf_meta_tags
+     8: 
+     9: 	%body
+    10: 		%div{style:" #{ "display:none;" if alert.nil? && notice.nil}" }
+    11: 			%p.notice= notice
+    12: 			%p.alert= alert
+    13: 		Hola mundo
+  app/views/layouts/landing.haml:10:in `_app_views_layouts_landing_haml___53879120551125946_70254287625260'
+  app/controllers/welcome_controller.rb:6:in `unregistered'
+
+
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (9.0ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.1ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (36.4ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.8ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (1.3ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (28.3ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (54.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 16:20:53 -0500
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/landing (2.4ms)
+Completed 500 Internal Server Error in 68ms (ActiveRecord: 0.0ms)
+
+ActionView::Template::Error (undefined method `nil' for nil:NilClass
+Did you mean?  nil?):
+     7: 		= csrf_meta_tags
+     8: 
+     9: 	%body
+    10: 		%div{style:" #{ "display:none;" if alert.nil && notice.nil}" }
+    11: 			%p.notice= notice
+    12: 			%p.alert= alert
+    13: 		Hola mundo
+  app/views/layouts/landing.haml:10:in `_app_views_layouts_landing_haml___53879120551125946_70254282525680'
+  app/controllers/welcome_controller.rb:6:in `unregistered'
+
+
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (9.0ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.1ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (35.9ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.6ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (25.1ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.6ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (51.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 16:21:05 -0500
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/landing (3.1ms)
+Completed 200 OK in 59ms (Views: 58.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 16:25:48 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/landing (3314.4ms)
+Completed 200 OK in 3556ms (Views: 3555.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/common.self-5c95828208f22a4f9475168f8aea8ac02311826b2f9ff74707266b2dbdb66b75.css?body=1" for 127.0.0.1 at 2016-08-28 16:25:52 -0500
+
+
+Started GET "/assets/bootstrap-material-design/material.self-a269dc7413ed51d1938473ca64105719ee2887e81346a8302ff3a8848e38140c.css?body=1" for 127.0.0.1 at 2016-08-28 16:25:52 -0500
+
+
+Started GET "/assets/landing.self-129932ab10f1d1e5a4621657c626d393bb0718716393ddba5dc5b25d244bd3d9.css?body=1" for 127.0.0.1 at 2016-08-28 16:25:52 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 16:29:45 -0500
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/landing (2.6ms)
+Completed 200 OK in 2174ms (Views: 2173.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/common.self-117b275e22dfbc6ce553ba0b07ae42a17a973807ccc200b21a09e6cbc8e4111d.css?body=1" for 127.0.0.1 at 2016-08-28 16:29:47 -0500
+
+
+Started GET "/assets/landing.self-84116979df13dabb041c11254816eea5290b88d0138d5a72f24f34eb98162967.css?body=1" for 127.0.0.1 at 2016-08-28 16:29:48 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 16:30:02 -0500
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/landing (3.8ms)
+Completed 200 OK in 136ms (Views: 135.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/landing.self-0497574877e97050f5012e121b6bce553cc8f3f10bf20cd071bfb05a18fdb7e0.css?body=1" for 127.0.0.1 at 2016-08-28 16:30:02 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 16:30:04 -0500
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/landing (3.3ms)
+Completed 200 OK in 66ms (Views: 66.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 16:42:51 -0500
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/landing (7.6ms)
+Completed 200 OK in 238ms (Views: 238.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 16:43:08 -0500
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/landing (3.3ms)
+Completed 200 OK in 144ms (Views: 143.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/land.self-0ba5b4e3a8fc64d210b92e5c95c7bf5f8aae8efc9b48fb9ceb108535b45fbbd1.css?body=1" for 127.0.0.1 at 2016-08-28 16:43:09 -0500
+
+
+Started GET "/assets/landing.self-39e937c38e18a6e30a0df8f358daffb7d0f9ef8e553222083a4197eb152141a5.css?body=1" for 127.0.0.1 at 2016-08-28 16:43:09 -0500
+
+
+Started GET "/assets/Kostic-Bold-83a798bffbbd07d0333c84ed7e1ac0b3cd0f77841fec3b6e2329ba23942f1bfb.ttf" for 127.0.0.1 at 2016-08-28 16:43:09 -0500
+
+
+Started GET "/assets/Kostic-Thin-421df589b5c358296f015fe86c2a985889bbe6e3e2159db74830ec58f45efdb1.ttf" for 127.0.0.1 at 2016-08-28 16:43:09 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 16:44:53 -0500
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/landing (10.2ms)
+Completed 200 OK in 88ms (Views: 88.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 16:45:52 -0500
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/landing (8.2ms)
+Completed 200 OK in 2189ms (Views: 2189.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/common.self-209997a8e3b4b47e0706f09362fbb5532315dd96c28784a7550dd4b9f351c730.css?body=1" for 127.0.0.1 at 2016-08-28 16:45:55 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 16:45:57 -0500
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/landing (2.7ms)
+Completed 200 OK in 73ms (Views: 72.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 16:46:22 -0500
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/landing (9.7ms)
+Completed 200 OK in 83ms (Views: 82.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 16:46:47 -0500
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/landing (5.0ms)
+Completed 200 OK in 2203ms (Views: 2202.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/common.self-1779a46c8b00c6dfc74fde618fcaef287b7280e7bbb5aab98009322ccd89e75f.css?body=1" for 127.0.0.1 at 2016-08-28 16:46:50 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 16:51:25 -0500
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/landing (13.1ms)
+Completed 200 OK in 2227ms (Views: 2226.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/common.self-f71daf26ba8452982a03eba9020bfd2e9e4afcef3cdcebe275dd87eb72bd6a78.css?body=1" for 127.0.0.1 at 2016-08-28 16:51:27 -0500
+
+
+Started GET "/assets/upload-icon-a1104a29ad8a94a760433212024332b16ef09f20f8770a0e40391ac43d87ef54.png" for 127.0.0.1 at 2016-08-28 16:51:27 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 16:51:37 -0500
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/landing (16.1ms)
+Completed 200 OK in 107ms (Views: 106.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 16:54:08 -0500
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/landing (15.4ms)
+Completed 200 OK in 2172ms (Views: 2171.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/common.self-6e6d3520ffdc79e4d7587d30126d7e15c9cd16fa35edc11d48b210c91597b1ce.css?body=1" for 127.0.0.1 at 2016-08-28 16:54:10 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 16:54:50 -0500
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/landing (11.5ms)
+Completed 200 OK in 2108ms (Views: 2108.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/common.self-cf2e6f62d3e570fa1384af27f7a395c690436acff7e6788177c66746713820b0.css?body=1" for 127.0.0.1 at 2016-08-28 16:54:52 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 16:55:00 -0500
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/landing (5.3ms)
+Completed 200 OK in 2283ms (Views: 2282.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/common.self-92f769d3c39f2c8fd57e9d232dbcc6ae2314a8d5756981f42fc3fd416ef04504.css?body=1" for 127.0.0.1 at 2016-08-28 16:55:02 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 16:55:38 -0500
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/landing (15.9ms)
+Completed 200 OK in 81ms (Views: 80.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/youtube-icon-8d7bb72eb0df06ad7d8b772e6546708c8067ed0b2fbf00516641124395aad945.png" for 127.0.0.1 at 2016-08-28 16:55:38 -0500
+
+
+Started GET "/assets/money-icon-7a338c32702e2b1e7c4fab5039fafd25ad13380fd5326353a1ebd19d2b2f6674.png" for 127.0.0.1 at 2016-08-28 16:55:38 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 16:56:22 -0500
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/landing (5.7ms)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.0ms)
+
+ActionView::Template::Error (Illegal nesting: content can't be both given on the same line as %div and nested within it.):
+     9: 			=image_tag "mono.png"
+    10: 
+    11: .grey.white-text.big-padding.tóp-space
+    12: 	%h2.bigger.kostic.text-center 
+    13: 		%strong
+    14: 			Tiendus en 3 pasos
+    15: 	.text-center
+  app/views/welcome/unregistered.haml:12
+  app/controllers/welcome_controller.rb:6:in `unregistered'
+
+
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (11.1ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.4ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (39.2ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.6ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (36.2ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (65.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 16:56:32 -0500
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/landing (12.9ms)
+Completed 200 OK in 68ms (Views: 68.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 16:57:00 -0500
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/landing (11.4ms)
+Completed 200 OK in 69ms (Views: 68.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 16:58:52 -0500
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/landing (18.9ms)
+Completed 200 OK in 86ms (Views: 86.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 17:06:09 -0500
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/landing (13.9ms)
+Completed 200 OK in 2123ms (Views: 2123.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/common.self-60a48f30a026f04b91176b5e3420f11207534b21a6c975b0df526ce08e2dc6c2.css?body=1" for 127.0.0.1 at 2016-08-28 17:06:12 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 17:08:11 -0500
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/landing (8.4ms)
+Completed 200 OK in 153ms (Views: 152.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/land.self-7a1d788cc7c2d4a3590c02fb5f22af0cc683426c01735e54e37506118d1a4a45.css?body=1" for 127.0.0.1 at 2016-08-28 17:08:11 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 17:08:16 -0500
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/landing (9.1ms)
+Completed 200 OK in 68ms (Views: 68.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 17:08:27 -0500
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/landing (6.2ms)
+Completed 200 OK in 136ms (Views: 135.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/land.self-c3ad7b93294b80dc9238fac6494238748c707aacfa94c80b64ba2d9c732641f7.css?body=1" for 127.0.0.1 at 2016-08-28 17:08:27 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 17:09:17 -0500
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/landing (13.4ms)
+Completed 200 OK in 66ms (Views: 65.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 17:14:02 -0500
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/landing (16.6ms)
+Completed 200 OK in 72ms (Views: 71.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/images/media_icons.png" for 127.0.0.1 at 2016-08-28 17:14:02 -0500
+
+ActionController::RoutingError (No route matches [GET] "/images/media_icons.png"):
+  actionpack (4.2.4) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.4) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.4) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.4) lib/rails/engine.rb:518:in `call'
+  railties (4.2.4) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /home/miguel/.rvm/rubies/ruby-2.3.1/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /home/miguel/.rvm/rubies/ruby-2.3.1/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /home/miguel/.rvm/rubies/ruby-2.3.1/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.6ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/routes/_table.html.erb (6.1ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.1ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (52.8ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (1.3ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.6ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (29.6ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.1ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (58.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 17:15:05 -0500
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/landing (24.0ms)
+Completed 200 OK in 90ms (Views: 90.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/media-icons-ce4e314d0bd2ea04b3b2a2ba5640e1a8608acc26a1710108dee1a51561be6d93.png" for 127.0.0.1 at 2016-08-28 17:15:05 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 17:18:19 -0500
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/landing (8.8ms)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.0ms)
+
+ActionView::Template::Error (Inconsistent indentation: "\t\t  " used for indentation, but the rest of the document was indented using 1 tab.):
+    66: .top-space.big-padding
+    67: 	.col-md-11.col-xs-12.center-block.no-float
+    68: 		=form_tag("/",method: :post) do 
+    69: 		  =email_field_tag "email",nil
+  app/views/welcome/unregistered.haml:69
+  app/controllers/welcome_controller.rb:6:in `unregistered'
+
+
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (13.0ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (5.2ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (41.8ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.7ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.6ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (26.7ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (52.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 17:18:48 -0500
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/landing (78.2ms)
+Completed 500 Internal Server Error in 81ms (ActiveRecord: 0.0ms)
+
+ActionView::Template::Error (undefined local variable or method `create_email_path' for #<#<Class:0x00000003ecf470>:0x007f44c631ff58>):
+    65: .top-space.big-padding.bottom-space
+    66: .top-space.big-padding
+    67: 	.col-md-11.col-xs-12.center-block.no-float
+    68: 		=form_tag(create_email_path,method: :post,remote:true,id: "emails-form") do
+    69: 			=email_field_tag "email",nil,class:"col-xs-12 inline-block text-center landing-form",placeholder:"Escribe aquí tu mail"
+  app/views/welcome/unregistered.haml:68:in `_app_views_welcome_unregistered_haml___1912607073817037932_69966679832240'
+  app/controllers/welcome_controller.rb:6:in `unregistered'
+
+
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (10.3ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.0ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (37.2ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.7ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.8ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (25.7ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (53.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 17:19:03 -0500
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/landing (87.0ms)
+Completed 500 Internal Server Error in 89ms (ActiveRecord: 0.0ms)
+
+ActionView::Template::Error (undefined local variable or method `create_email_path' for #<#<Class:0x00000003ecf470>:0x007f44c6fd4f00>):
+    65: .top-space.big-padding.bottom-space
+    66: .top-space.big-padding
+    67: 	.col-md-11.col-xs-12.center-block.no-float
+    68: 		=form_tag(create_email_path,method: :post) do
+    69: 			=email_field_tag "email",nil,class:"col-xs-12 inline-block text-center landing-form",placeholder:"Escribe aquí tu mail"
+  app/views/welcome/unregistered.haml:68:in `_app_views_welcome_unregistered_haml___1912607073817037932_69966686477860'
+  app/controllers/welcome_controller.rb:6:in `unregistered'
+
+
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (9.9ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.7ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.3ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (38.0ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.7ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (25.0ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (51.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 17:19:17 -0500
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/landing (17.1ms)
+Completed 200 OK in 74ms (Views: 73.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 17:20:08 -0500
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/landing (17.6ms)
+Completed 200 OK in 169ms (Views: 169.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/land.self-3ec4934602edc8af3c1b777d8f2658d4442c48a53b3d7fa41098573c7faa2d15.css?body=1" for 127.0.0.1 at 2016-08-28 17:20:08 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 17:21:03 -0500
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/landing (11.0ms)
+Completed 200 OK in 254ms (Views: 253.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/land.self-a8ec51b597f27c0193c9cc997a7ed61face736378cd8a0b7a0363953dcbf921c.css?body=1" for 127.0.0.1 at 2016-08-28 17:21:04 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 17:21:46 -0500
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/landing (12.0ms)
+Completed 200 OK in 162ms (Views: 161.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/land.self-05cdaa7d895270e15a37a1d222ddd415f721140d3e87fe53e04d1eb35168769f.css?body=1" for 127.0.0.1 at 2016-08-28 17:21:47 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 17:23:11 -0500
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/landing (8.4ms)
+Completed 200 OK in 147ms (Views: 146.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/land.self-6c459ca3259646730d06c14fd3a84475da9f261c8bb1ad9164e3c8cca42d03f1.css?body=1" for 127.0.0.1 at 2016-08-28 17:23:12 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 17:24:57 -0500
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/landing (16.3ms)
+Completed 200 OK in 76ms (Views: 75.9ms | ActiveRecord: 0.0ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateMyEmails (20160828222653)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "my_emails" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "ip" varchar, "state" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20160828222653"]]
+  [1m[36m (148.6ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.3ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateMyEmails (20160828222653)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  DROP TABLE "my_emails"
+  [1m[36mSQL (0.5ms)[0m  [1mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?[0m  [["version", "20160828222653"]]
+  [1m[35m (171.8ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+
+  [1m[36m (0.3ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateMyEmails (20160828223949)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "my_emails" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "ip" varchar, "state" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20160828223949"]]
+  [1m[36m (131.2ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.2ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 19:19:54 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/landing (722.2ms)
+Completed 200 OK in 843ms (Views: 843.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 19:24:36 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/landing (690.8ms)
+Completed 200 OK in 931ms (Views: 930.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/email.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-08-28 19:24:37 -0500
+
+
+Started POST "/email/create" for 127.0.0.1 at 2016-08-28 19:24:47 -0500
+Processing by EmailController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"IHEl3Qcv1MmdAbzKSLkudo/e3qS7VL+0CjULanpod5Pc1NRtnJiK04HiCyu2PHEKgBJvDBkleVNX2IDB8f/EPQ==", "email"=>"miguel@hotmail.com"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMyEmail Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "my_emails" WHERE "my_emails"."email" = 'miguel@hotmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "my_emails" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "miguel@hotmail.com"], ["created_at", "2016-08-29 00:24:47.139874"], ["updated_at", "2016-08-29 00:24:47.139874"]]
+  [1m[36m (165.1ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 198ms (Views: 0.8ms | ActiveRecord: 166.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 19:24:53 -0500
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/landing (9.9ms)
+Completed 200 OK in 66ms (Views: 65.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/email/create" for 127.0.0.1 at 2016-08-28 19:25:01 -0500
+Processing by EmailController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"kuCHjvwpe91qaiEPEIi5ntRu7HDEVRHjd5rQ8ChtJeluRXY+Z54lx3aJlu7uDebi26Jd2GYk1wQqd1tbo/qWRw==", "email"=>"fa@fdsg"}
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mMyEmail Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "my_emails" WHERE "my_emails"."email" = 'fa@fdsg' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "my_emails" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "fa@fdsg"], ["created_at", "2016-08-29 00:25:01.442727"], ["updated_at", "2016-08-29 00:25:01.442727"]]
+  [1m[36m (190.8ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 199ms (Views: 0.6ms | ActiveRecord: 191.5ms)
+
+
+Started POST "/email/create" for 127.0.0.1 at 2016-08-28 19:37:00 -0500
+Processing by EmailController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"kuCHjvwpe91qaiEPEIi5ntRu7HDEVRHjd5rQ8ChtJeluRXY+Z54lx3aJlu7uDebi26Jd2GYk1wQqd1tbo/qWRw==", "email"=>"nico@nico.com"}
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mMyEmail Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "my_emails" WHERE "my_emails"."email" = 'nico@nico.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "my_emails" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "nico@nico.com"], ["created_at", "2016-08-29 00:37:00.163686"], ["updated_at", "2016-08-29 00:37:00.163686"]]
+  [1m[36m (214.1ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 221ms (Views: 0.6ms | ActiveRecord: 214.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 19:37:10 -0500
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/landing (17.9ms)
+Completed 200 OK in 80ms (Views: 80.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/email/create" for 127.0.0.1 at 2016-08-28 19:37:18 -0500
+Processing by EmailController#create as JS
+  Parameters: {"utf8"=>"✓", "email"=>"nicolas@ni.com"}
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mMyEmail Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "my_emails" WHERE "my_emails"."email" = 'nicolas@ni.com' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "my_emails" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "nicolas@ni.com"], ["created_at", "2016-08-29 00:37:18.775998"], ["updated_at", "2016-08-29 00:37:18.775998"]]
+  [1m[36m (241.0ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 248ms (Views: 1.1ms | ActiveRecord: 241.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 19:38:53 -0500
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/landing (11.6ms)
+Completed 200 OK in 2114ms (Views: 2113.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/common.self-92c82f4f430d3aa2d4e728729755c562e93c658e580325f525c75f2ecae46208.css?body=1" for 127.0.0.1 at 2016-08-28 19:38:56 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 19:39:12 -0500
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/landing (48.7ms)
+Completed 200 OK in 130ms (Views: 130.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 19:39:54 -0500
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/landing (42.3ms)
+Completed 200 OK in 136ms (Views: 136.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 19:44:25 -0500
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/landing (28.0ms)
+Completed 200 OK in 623ms (Views: 622.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/forms.self-3765d365ee808d4c065f1abef5254c72563e1abd7a7742b54c99032d1e3da60d.js?body=1" for 127.0.0.1 at 2016-08-28 19:44:26 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 19:44:47 -0500
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/landing (32.3ms)
+Completed 200 OK in 166ms (Views: 165.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 19:47:58 -0500
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/landing (29.5ms)
+Completed 200 OK in 2641ms (Views: 2640.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/common.self-bc256fa403c972b2fea3865e5238cec0866f2b7eb026bdd0b5426b79570d9f64.css?body=1" for 127.0.0.1 at 2016-08-28 19:48:01 -0500
+
+
+Started GET "/assets/forms.self-3b2128f07463d95e9c90d02d3866b5e2a5f25e0b7ad1bcb7bf2b34a3da9e6a38.js?body=1" for 127.0.0.1 at 2016-08-28 19:48:01 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 19:48:26 -0500
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/landing (33.7ms)
+Completed 200 OK in 111ms (Views: 110.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 20:13:09 -0500
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/landing (13.0ms)
+Completed 200 OK in 413ms (Views: 412.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/forms.self-8e386845b5986ed09ceefdb43052f05bdd5b6803e882232bde5c64217ad6f50e.js?body=1" for 127.0.0.1 at 2016-08-28 20:13:09 -0500
+
+
+Started POST "/email/create" for 127.0.0.1 at 2016-08-28 20:13:14 -0500
+Processing by EmailController#create as JS
+  Parameters: {"utf8"=>"✓", "email"=>"nico@nico.com"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMyEmail Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "my_emails" WHERE "my_emails"."email" = 'nico@nico.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+Completed 422 Unprocessable Entity in 18ms (Views: 0.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 20:14:22 -0500
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/landing (8.4ms)
+Completed 200 OK in 83ms (Views: 83.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/email/create" for 127.0.0.1 at 2016-08-28 20:14:28 -0500
+Processing by EmailController#create as JS
+  Parameters: {"utf8"=>"✓", "email"=>"nico@nico.com"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMyEmail Exists (0.2ms)[0m  SELECT  1 AS one FROM "my_emails" WHERE "my_emails"."email" = 'nico@nico.com' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+Completed 422 Unprocessable Entity in 18ms (Views: 0.2ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-28 20:17:20 -0500
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/landing (29.4ms)
+Completed 200 OK in 481ms (Views: 481.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/forms.self-ea7e28b796676eb960601b70fdcf7f1d5ae470d3bfe6fc5d878712e5dd0913ff.js?body=1" for 127.0.0.1 at 2016-08-28 20:17:20 -0500
+
+
+Started POST "/email/create" for 127.0.0.1 at 2016-08-28 20:17:30 -0500
+Processing by EmailController#create as JS
+  Parameters: {"utf8"=>"✓", "email"=>"miguel12@hotmail.com"}
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mMyEmail Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "my_emails" WHERE "my_emails"."email" = 'miguel12@hotmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "my_emails" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "miguel12@hotmail.com"], ["created_at", "2016-08-29 01:17:30.956972"], ["updated_at", "2016-08-29 01:17:30.956972"]]
+  [1m[36m (147.0ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 153ms (Views: 0.5ms | ActiveRecord: 147.8ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateProducts (20160829012238)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "products" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "pricing" decimal, "description" text, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (0.2ms)[0m  [1mCREATE  INDEX "index_products_on_user_id" ON "products" ("user_id")[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20160829012238"]]
+  [1m[36m (117.9ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.2ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_products_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_products_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.3ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+
+  [1m[36m (0.2ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+
+
+Started GET "/products" for 127.0.0.1 at 2016-08-28 20:23:18 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ProductsController#index as HTML
+  [1m[35mProduct Load (0.2ms)[0m  SELECT "products".* FROM "products"
+  Rendered products/index.html.haml within layouts/application (7.8ms)
+Completed 200 OK in 871ms (Views: 853.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.self-167193cd81d9330d9ddb5c4ec7b44214fea529aa8a94f3a86e6526e4f652fc02.css?body=1" for 127.0.0.1 at 2016-08-28 20:23:19 -0500
+
+
+Started GET "/assets/products.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-08-28 20:23:19 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateProducts (20160829012238)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  DROP TABLE "products"
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?[0m  [["version", "20160829012238"]]
+  [1m[35m (147.1ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.3ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+
+  [1m[36m (0.3ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateProducts (20160829012238)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "products" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "pricing" decimal(10,2), "description" text, "user_id" integer, "avatar_file_name" varchar, "avatar_content_type" varchar, "avatar_file_size" integer, "avatar_updated_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (0.2ms)[0m  [1mCREATE  INDEX "index_products_on_user_id" ON "products" ("user_id")[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20160829012238"]]
+  [1m[36m (156.2ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.4ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.3ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_products_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_products_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+
+  [1m[36m (0.3ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+
+
+Started GET "/products" for 127.0.0.1 at 2016-08-28 20:28:29 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ProductsController#index as HTML
+  [1m[35mProduct Load (0.3ms)[0m  SELECT "products".* FROM "products"
+  Rendered products/index.html.haml within layouts/application (2.7ms)
+Completed 200 OK in 109ms (Views: 104.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/products/new" for 127.0.0.1 at 2016-08-28 20:28:31 -0500
+Processing by ProductsController#new as HTML
+  Rendered products/_form.html.haml (37.3ms)
+  Rendered products/new.html.haml within layouts/application (46.0ms)
+Completed 200 OK in 162ms (Views: 141.7ms | ActiveRecord: 0.4ms)

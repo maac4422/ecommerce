@@ -1,0 +1,129 @@
+@import "bootstrap";
+
+$green: #16a085;
+$grey: #5A6576;
+$other-grey: #E7ECEE;
+$blue: #058CC5;
+$red: #d2527F;
+$light-blue: #3498DB;
+
+
+.green{
+	background-color: $green;
+}
+
+.green-text{
+	color: $green;
+}
+
+.white{
+	background-color: white;
+}
+
+.white-text{
+	color: white;
+}
+
+
+.blue{
+	background-color: $blue;
+}
+
+.blue-text{
+	color: $blue;
+}
+
+.light-blue{
+	background-color: $light-blue;
+}
+
+.light-blue-text{
+	color: $light-blue;
+}
+
+.red{
+	background-color: $red;
+}
+
+.red-text{
+	color: $red;
+}
+
+.grey{
+	background-color: $grey;
+}
+
+.grey-text{
+	color: $grey;
+}
+
+.other-grey{
+	background-color: $other-grey;
+}
+
+.other-grey-text{
+	color: $other-grey;
+}
+
+
+/*Padding*/
+
+.big-padding{
+	padding:2em;
+}
+
+.no-padding{
+	padding:0;
+}
+
+.large-padding{
+	padding: 5px 10px;
+}
+
+/*Margenes*/
+
+.top-space{
+	margin-top: 1em;
+}
+
+.bottom-space{
+	margin-bottom:2em;
+}
+
+/*Aliniamiento*/
+
+.no-float{
+	float: none !important;
+}
+
+.inline-block{
+	float: none !important;
+	display: inline-block;
+	vertical-align:middle;
+}
+
+.absolute{
+	position:absolute;
+}
+
+/*Tamaños*/
+
+.ultra-big{
+	font-size:7em;
+}
+
+.bigger{
+	font-size: 4em;
+}
+
+.big{
+	font-size: 3em;
+}
+
+.medium{
+	font-size: 1.5em;
+}
+
+.small{
+	font-size: 0.8em;
+}

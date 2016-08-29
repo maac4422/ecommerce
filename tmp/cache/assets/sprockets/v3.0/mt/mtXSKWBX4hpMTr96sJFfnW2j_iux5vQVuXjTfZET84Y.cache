@@ -1,0 +1,16 @@
+I"(function() {
+  $(document).on("ajax:beforeSend", "#emails_form", function() {
+    return $("#email-info").html("Se esta procesando tu petición.");
+  });
+
+  $(document).on("ajax:success", "#emails_form", function(ev, data, state, xhr) {
+    $(this).slideUp();
+    return $("#email-info").html("Ya estas en la fila de invitaciones pendientes.");
+  });
+
+  $(document).on("ajax:error", "#emails_form", function(ev, data, state, xhr) {
+    return $("#email-info").html(data.responseJSON.email[0]);
+  });
+
+}).call(this);
+:ET
