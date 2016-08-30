@@ -1274,3 +1274,247 @@ Processing by ProductsController#new as HTML
   Rendered products/_form.html.haml (37.3ms)
   Rendered products/new.html.haml within layouts/application (46.0ms)
 Completed 200 OK in 162ms (Views: 141.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-29 22:09:23 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/landing (921.2ms)
+Completed 200 OK in 1474ms (Views: 1473.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/common.self-bc256fa403c972b2fea3865e5238cec0866f2b7eb026bdd0b5426b79570d9f64.css?body=1" for 127.0.0.1 at 2016-08-29 22:09:25 -0500
+
+
+Started GET "/assets/land.self-6c459ca3259646730d06c14fd3a84475da9f261c8bb1ad9164e3c8cca42d03f1.css?body=1" for 127.0.0.1 at 2016-08-29 22:09:25 -0500
+
+
+Started GET "/assets/bootstrap-material-design/material.self-a269dc7413ed51d1938473ca64105719ee2887e81346a8302ff3a8848e38140c.css?body=1" for 127.0.0.1 at 2016-08-29 22:09:25 -0500
+
+
+Started GET "/assets/bootstrap-material-design/snackbar.self-7fbc09b4c83aec44967aa4f2b4fbba3c3f62c95560f2a99321af99e72d60664e.css?body=1" for 127.0.0.1 at 2016-08-29 22:09:25 -0500
+
+
+Started GET "/assets/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1" for 127.0.0.1 at 2016-08-29 22:09:25 -0500
+
+
+Started GET "/assets/bootstrap-material-design/ripples.self-138c042e103000c2c279cbbe8cf30d1c48f18c24b7100658173a02680c73bb1f.css?body=1" for 127.0.0.1 at 2016-08-29 22:09:25 -0500
+
+
+Started GET "/assets/landing.self-39e937c38e18a6e30a0df8f358daffb7d0f9ef8e553222083a4197eb152141a5.css?body=1" for 127.0.0.1 at 2016-08-29 22:09:25 -0500
+
+
+Started GET "/assets/bootstrap-material-design/index.self-f9ecc503685523b804a0f02a2ae501bb190b025b8354ec053661d70988296034.css?body=1" for 127.0.0.1 at 2016-08-29 22:09:25 -0500
+
+
+Started GET "/assets/jquery_ujs.self-784a997f6726036b1993eb2217c9cb558e1cbb801c6da88105588c56f13b466a.js?body=1" for 127.0.0.1 at 2016-08-29 22:09:25 -0500
+
+
+Started GET "/assets/turbolinks.self-c5acd7a204f5f25ce7a1d8a0e4d92e28d34c9e2df2c7371cd7af88e147e4ad82.js?body=1" for 127.0.0.1 at 2016-08-29 22:09:25 -0500
+
+
+Started GET "/assets/bootstrap.self-b38817c3e3a3049abb1fc08dd6ae448b23330f8453226efdb074710209474f75.js?body=1" for 127.0.0.1 at 2016-08-29 22:09:25 -0500
+
+
+Started GET "/assets/bootstrap-material-design/material.self-5aae70c7a657f0096b3b64d2f7c073024912d5c525488d25ccfc580590647a69.js?body=1" for 127.0.0.1 at 2016-08-29 22:09:25 -0500
+
+
+Started GET "/assets/bootstrap-material-design/ripples.self-568842904f97a152a76ff3ed5995d21aabf5bd56e9f658b9929744dc581778ef.js?body=1" for 127.0.0.1 at 2016-08-29 22:09:25 -0500
+
+
+Started GET "/assets/bootstrap-material-design/jquery.nouislider.self-14a408d2e3a637aad5505ea30dd659b99660f0beac7b100510f6abf6dd67728f.js?body=1" for 127.0.0.1 at 2016-08-29 22:09:25 -0500
+
+
+Started GET "/assets/bootstrap-material-design/snackbar.self-020091f46c96844f46d9e6baa338d932f5cf4c9e998e7fe2136ab5d420d9b0c3.js?body=1" for 127.0.0.1 at 2016-08-29 22:09:25 -0500
+
+
+Started GET "/assets/bootstrap-material-design/index.self-545c38b0922de19734fbffde62792c37c2aef6a3216cfa472449173165220f7d.js?body=1" for 127.0.0.1 at 2016-08-29 22:09:25 -0500
+
+
+Started GET "/assets/products.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-08-29 22:09:25 -0500
+
+
+Started GET "/assets/welcome.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-08-29 22:09:25 -0500
+
+
+Started GET "/assets/forms.self-ea7e28b796676eb960601b70fdcf7f1d5ae470d3bfe6fc5d878712e5dd0913ff.js?body=1" for 127.0.0.1 at 2016-08-29 22:09:25 -0500
+
+
+Started GET "/assets/application.self-7862a8a8b42407b4741a1adeeea35f0d13ddc4f702ec532adb0674491d296495.js?body=1" for 127.0.0.1 at 2016-08-29 22:09:25 -0500
+
+
+Started GET "/assets/email.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-08-29 22:09:25 -0500
+
+
+Started GET "/assets/tiendus-2fa14951f8e36d63a662021b41f48fc555a7e88aa247061b97b14b0b070476c7.png" for 127.0.0.1 at 2016-08-29 22:09:25 -0500
+
+
+Started GET "/assets/youtube-icon-8d7bb72eb0df06ad7d8b772e6546708c8067ed0b2fbf00516641124395aad945.png" for 127.0.0.1 at 2016-08-29 22:09:25 -0500
+
+
+Started GET "/assets/upload-icon-a1104a29ad8a94a760433212024332b16ef09f20f8770a0e40391ac43d87ef54.png" for 127.0.0.1 at 2016-08-29 22:09:25 -0500
+
+
+Started GET "/assets/money-icon-7a338c32702e2b1e7c4fab5039fafd25ad13380fd5326353a1ebd19d2b2f6674.png" for 127.0.0.1 at 2016-08-29 22:09:25 -0500
+
+
+Started GET "/assets/mono-4be47b33f356e652f8502fccff79d5ee9aafaff2ac4608b4485490a38ed85f62.png" for 127.0.0.1 at 2016-08-29 22:09:25 -0500
+
+
+Started GET "/assets/media-icons-ce4e314d0bd2ea04b3b2a2ba5640e1a8608acc26a1710108dee1a51561be6d93.png" for 127.0.0.1 at 2016-08-29 22:09:25 -0500
+
+
+Started GET "/assets/Kostic-Bold-83a798bffbbd07d0333c84ed7e1ac0b3cd0f77841fec3b6e2329ba23942f1bfb.ttf" for 127.0.0.1 at 2016-08-29 22:09:25 -0500
+
+
+Started GET "/assets/Kostic-Thin-421df589b5c358296f015fe86c2a985889bbe6e3e2159db74830ec58f45efdb1.ttf" for 127.0.0.1 at 2016-08-29 22:09:25 -0500
+
+
+Started GET "/products" for 127.0.0.1 at 2016-08-29 22:09:31 -0500
+Processing by ProductsController#index as HTML
+  [1m[35mProduct Load (0.3ms)[0m  SELECT "products".* FROM "products"
+  Rendered products/index.html.haml within layouts/application (13.0ms)
+Completed 200 OK in 199ms (Views: 189.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.self-167193cd81d9330d9ddb5c4ec7b44214fea529aa8a94f3a86e6526e4f652fc02.css?body=1" for 127.0.0.1 at 2016-08-29 22:09:32 -0500
+
+
+Started GET "/products/new" for 127.0.0.1 at 2016-08-29 22:09:44 -0500
+Processing by ProductsController#new as HTML
+Completed 401 Unauthorized in 7ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-08-29 22:09:44 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/devise-4.2.0/app/views/devise/shared/_links.html.erb (1.8ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/devise-4.2.0/app/views/devise/sessions/new.html.erb within layouts/application (42.1ms)
+Completed 200 OK in 188ms (Views: 100.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2016-08-29 22:09:47 -0500
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/devise-4.2.0/app/views/devise/shared/_links.html.erb (0.5ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/devise-4.2.0/app/views/devise/registrations/new.html.erb within layouts/application (5.2ms)
+Completed 200 OK in 122ms (Views: 120.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/favicon-92e86d463e909754599d66730477622cd3dd0b9bff58c47c9c38bebceb8073e5.ico" for 127.0.0.1 at 2016-08-29 22:09:47 -0500
+
+ActionController::RoutingError (No route matches [GET] "/assets/favicon-92e86d463e909754599d66730477622cd3dd0b9bff58c47c9c38bebceb8073e5.ico"):
+  actionpack (4.2.4) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.4) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.4) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.4) lib/rails/engine.rb:518:in `call'
+  railties (4.2.4) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /home/miguel/.rvm/rubies/ruby-2.3.1/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /home/miguel/.rvm/rubies/ruby-2.3.1/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /home/miguel/.rvm/rubies/ruby-2.3.1/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.5ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/routes/_table.html.erb (6.8ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.4ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (49.2ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.7ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.9ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (29.2ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (58.2ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-08-29 22:09:57 -0500
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"6QP2UuLLlnVt6YSfAzefSsxPYfNlkUIbXxzNRPNzOB1iF8gq0sLi4ymaqaun65MC/X11CMq3Rp3IY905qDMBVQ==", "user"=>{"email"=>"miguelarenas98@hotmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguelarenas98@hotmail.com' LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "miguelarenas98@hotmail.com"], ["encrypted_password", "$2a$11$AfDfNfjXKxzmeZtuGbNJCe/EJaHuSZUKVj0j7lxRWmEJF2R6oxEmm"], ["created_at", "2016-08-30 03:09:57.807642"], ["updated_at", "2016-08-30 03:09:57.807642"]]
+  [1m[35m (298.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "last_sign_in_ip" = ?, "current_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["last_sign_in_at", "2016-08-30 03:09:58.109584"], ["current_sign_in_at", "2016-08-30 03:09:58.109584"], ["last_sign_in_ip", "127.0.0.1"], ["current_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2016-08-30 03:09:58.110530"], ["id", 1]]
+  [1m[36m (136.9ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/products/new
+Completed 302 Found in 699ms (ActiveRecord: 436.6ms)
+
+
+Started GET "/products/new" for 127.0.0.1 at 2016-08-29 22:09:58 -0500
+Processing by ProductsController#new as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered products/_form.html.haml (3.3ms)
+  Rendered products/new.html.haml within layouts/application (5.5ms)
+Completed 500 Internal Server Error in 26ms (ActiveRecord: 0.8ms)
+
+SyntaxError (/home/miguel/Documents/Proyectos_Ruby/ecommerce/app/form_builders/bootstrap_form_builder.rb:11: syntax error, unexpected ',', expecting ')'
+			content_tag (:label,name, name:name) + super(name,*args)
+			                    ^):
+  app/form_builders/bootstrap_form_builder.rb:11: syntax error, unexpected ',', expecting ')'
+  app/views/products/_form.html.haml:1:in `_app_views_products__form_html_haml___960022995107150618_70118510403180'
+  app/views/products/new.html.haml:3:in `_app_views_products_new_html_haml__2101109301463399934_70118519770880'
+
+
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (12.4ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.7ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (53.8ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (1.2ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (1.1ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (27.5ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (54.5ms)
+
+
+Started GET "/products/new" for 127.0.0.1 at 2016-08-29 22:10:27 -0500
+Processing by ProductsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered products/_form.html.haml (3.7ms)
+  Rendered products/new.html.haml within layouts/application (4.6ms)
+Completed 200 OK in 94ms (Views: 63.9ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/products/new" for 127.0.0.1 at 2016-08-29 22:11:51 -0500
+Processing by ProductsController#new as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered products/_form.html.haml (4.8ms)
+  Rendered products/new.html.haml within layouts/application (6.6ms)
+Completed 200 OK in 97ms (Views: 69.2ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/products/new" for 127.0.0.1 at 2016-08-29 22:12:32 -0500
+Processing by ProductsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered products/_form.html.haml (4.5ms)
+  Rendered products/new.html.haml within layouts/application (5.8ms)
+Completed 200 OK in 107ms (Views: 70.4ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/products/new" for 127.0.0.1 at 2016-08-29 22:13:26 -0500
+Processing by ProductsController#new as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered products/_form.html.haml (3.6ms)
+  Rendered products/new.html.haml within layouts/application (4.7ms)
+Completed 200 OK in 103ms (Views: 71.0ms | ActiveRecord: 1.4ms)
