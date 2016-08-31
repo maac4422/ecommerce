@@ -6,14 +6,27 @@ $other-grey: #E7ECEE;
 $blue: #058CC5;
 $red: #d2527F;
 $light-blue: #3498DB;
+$teal: #009688;
 
-
+/*Texto*/
+.bold{
+	font-weight:bold;
+}
+/*Colores*/
 .green{
 	background-color: $green;
 }
 
 .green-text{
 	color: $green;
+}
+
+.teal{
+	background-color: $teal;
+}
+
+.teal-text{
+	color: $teal;
 }
 
 .white{
@@ -90,16 +103,23 @@ $light-blue: #3498DB;
 	margin-bottom:2em;
 }
 
+.no-margin{
+	margin: 0;
+}
 /*Aliniamiento*/
 
 .no-float{
 	float: none !important;
 }
 
+.in-top{
+	vertical-align:top !important;
+}
 .inline-block{
 	float: none !important;
 	display: inline-block;
 	vertical-align:middle;
+	margin-right: -4px;
 }
 
 .absolute{
@@ -120,8 +140,14 @@ $light-blue: #3498DB;
 	font-size: 3em;
 }
 
+
+
 .medium{
 	font-size: 1.5em;
+}
+
+.normal{
+	font-size: 1.2em;
 }
 
 .small{

@@ -1,0 +1,7 @@
+I"x(function() {
+  $(document).on("ready page:load", function() {
+    return $.material.init();
+  });
+
+}).call(this);
+:ET
