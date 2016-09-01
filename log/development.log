@@ -2382,3 +2382,862 @@ Processing by ProductsController#show as HTML
   [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
   Rendered products/admin.haml within layouts/application (6.4ms)
 Completed 200 OK in 80ms (Views: 74.8ms | ActiveRecord: 0.5ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateAttachments (20160901004526)
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "attachments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "product_id" integer, "file_file_name" varchar, "file_content_type" varchar, "file_file_size" integer, "file_updated_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (0.3ms)[0m  [1mCREATE  INDEX "index_attachments_on_product_id" ON "attachments" ("product_id")[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20160901004526"]]
+  [1m[36m (187.6ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.3ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_attachments_on_product_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_attachments_on_product_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_products_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_products_on_user_id' AND type='index'
+
+  [1m[36m (0.2ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-31 20:12:56 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/landing (2008.6ms)
+Completed 200 OK in 2513ms (Views: 2512.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/land.self-6c459ca3259646730d06c14fd3a84475da9f261c8bb1ad9164e3c8cca42d03f1.css?body=1" for 127.0.0.1 at 2016-08-31 20:12:58 -0500
+
+
+Started GET "/assets/attachments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-08-31 20:12:58 -0500
+
+
+Started GET "/assets/landing.self-39e937c38e18a6e30a0df8f358daffb7d0f9ef8e553222083a4197eb152141a5.css?body=1" for 127.0.0.1 at 2016-08-31 20:12:58 -0500
+
+
+Started GET "/assets/tiendus-2fa14951f8e36d63a662021b41f48fc555a7e88aa247061b97b14b0b070476c7.png" for 127.0.0.1 at 2016-08-31 20:12:58 -0500
+
+
+Started GET "/assets/mono-4be47b33f356e652f8502fccff79d5ee9aafaff2ac4608b4485490a38ed85f62.png" for 127.0.0.1 at 2016-08-31 20:12:59 -0500
+
+
+Started GET "/assets/youtube-icon-8d7bb72eb0df06ad7d8b772e6546708c8067ed0b2fbf00516641124395aad945.png" for 127.0.0.1 at 2016-08-31 20:12:59 -0500
+
+
+Started GET "/assets/upload-icon-a1104a29ad8a94a760433212024332b16ef09f20f8770a0e40391ac43d87ef54.png" for 127.0.0.1 at 2016-08-31 20:12:59 -0500
+
+
+Started GET "/assets/money-icon-7a338c32702e2b1e7c4fab5039fafd25ad13380fd5326353a1ebd19d2b2f6674.png" for 127.0.0.1 at 2016-08-31 20:12:59 -0500
+
+
+Started GET "/assets/media-icons-ce4e314d0bd2ea04b3b2a2ba5640e1a8608acc26a1710108dee1a51561be6d93.png" for 127.0.0.1 at 2016-08-31 20:12:59 -0500
+
+
+Started GET "/assets/Kostic-Bold-83a798bffbbd07d0333c84ed7e1ac0b3cd0f77841fec3b6e2329ba23942f1bfb.ttf" for 127.0.0.1 at 2016-08-31 20:12:59 -0500
+
+
+Started GET "/assets/Kostic-Thin-421df589b5c358296f015fe86c2a985889bbe6e3e2159db74830ec58f45efdb1.ttf" for 127.0.0.1 at 2016-08-31 20:12:59 -0500
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-08-31 20:13:35 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/devise-4.2.0/app/views/devise/shared/_links.html.erb (3.4ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/devise-4.2.0/app/views/devise/sessions/new.html.erb within layouts/application (193.5ms)
+Completed 200 OK in 454ms (Views: 418.0ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-08-31 20:13:43 -0500
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Mo2U7RQVi9vA6zQ1A3ZCl9Fi+3SPg+DRmWLkwpOfJpDeL93Enz83EX6bVzBnBK2X3yz9p0J4wrLg/tmAAonhzg==", "user"=>{"email"=>"miguelarenas98@hotmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["email", "miguelarenas98@hotmail.com"]]
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["last_sign_in_at", "2016-08-31 01:46:11.033829"], ["current_sign_in_at", "2016-09-01 01:13:44.263654"], ["sign_in_count", 3], ["updated_at", "2016-09-01 01:13:44.265115"], ["id", 1]]
+  [1m[36m (131.3ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 636ms (ActiveRecord: 132.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-31 20:13:44 -0500
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.haml within layouts/application (1.7ms)
+Completed 200 OK in 86ms (Views: 85.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/products/1" for 127.0.0.1 at 2016-08-31 20:13:48 -0500
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProduct Load (0.2ms)[0m  [1mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered products/admin.haml within layouts/application (2.8ms)
+Completed 500 Internal Server Error in 225ms (ActiveRecord: 2.4ms)
+
+ActionView::Template::Error (Illegal nesting: content can't be both given on the same line as %h3 and nested within it.):
+    17: 				Eliminar producto
+    18: 		%div
+    19: 			%h3.grey-text Archivos
+    20: 				=render "attachments/form", product_id: @product.id
+    21: 			  
+  app/views/products/admin.haml:20
+  app/controllers/products_controller.rb:16:in `show'
+
+
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (11.0ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (5.2ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (41.5ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.6ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.7ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (1.2ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (32.2ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (61.4ms)
+
+
+Started GET "/products/1" for 127.0.0.1 at 2016-08-31 20:14:01 -0500
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mProduct Load (0.1ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered attachments/_form.haml (2.3ms)
+  Rendered products/admin.haml within layouts/application (8.6ms)
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 0.6ms)
+
+SyntaxError (/home/miguel/Documents/Proyectos_Ruby/ecommerce/app/views/attachments/_form.haml:1: syntax error, unexpected ','
+...l_temp = form_for @attachment,,builder: BootstrapFormBuilder...
+...                               ^
+/home/miguel/Documents/Proyectos_Ruby/ecommerce/app/views/attachments/_form.haml:7: syntax error, unexpected keyword_ensure, expecting end-of-input):
+  app/views/attachments/_form.haml:1: syntax error, unexpected ','
+  app/views/attachments/_form.haml:7: syntax error, unexpected keyword_ensure, expecting end-of-input
+  app/views/products/admin.haml:20:in `_app_views_products_admin_haml__2281192238517177004_69922919504880'
+  app/controllers/products_controller.rb:16:in `show'
+
+
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (12.2ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.8ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (41.6ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.9ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (1.4ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (28.8ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (55.8ms)
+
+
+Started GET "/products/1" for 127.0.0.1 at 2016-08-31 20:14:11 -0500
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProduct Load (0.2ms)[0m  [1mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered attachments/_form.haml (85.7ms)
+  Rendered products/admin.haml within layouts/application (87.9ms)
+Completed 500 Internal Server Error in 95ms (ActiveRecord: 0.5ms)
+
+ActionView::Template::Error (undefined local variable or method `f' for #<#<Class:0x007f3064fb7020>:0x007f30666ca2d0>):
+    1: =form_for @attachment,builder: BootstrapFormBuilder do 
+    2: 	= f.errors
+    3: 	=f.hidden_field :product_id, value: product_id
+    4: 	= f.file_field :file
+    5: 	= f.submit "Enviar"
+  app/views/attachments/_form.haml:2:in `block in _app_views_attachments__form_haml___1080993637896529849_69922926837340'
+  app/views/attachments/_form.haml:1:in `_app_views_attachments__form_haml___1080993637896529849_69922926837340'
+  app/views/products/admin.haml:20:in `_app_views_products_admin_haml__2281192238517177004_69922919504880'
+  app/controllers/products_controller.rb:16:in `show'
+
+
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (22.4ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.8ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (51.2ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.6ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.8ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (28.7ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (55.8ms)
+
+
+Started GET "/products/1" for 127.0.0.1 at 2016-08-31 20:14:21 -0500
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mProduct Load (0.2ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered attachments/_form.haml (38.4ms)
+  Rendered products/admin.haml within layouts/application (41.5ms)
+Completed 200 OK in 115ms (Views: 110.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/products/1" for 127.0.0.1 at 2016-08-31 20:20:50 -0500
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProduct Load (0.2ms)[0m  [1mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered attachments/_form.haml (3.6ms)
+  Rendered products/admin.haml within layouts/application (6.2ms)
+Completed 200 OK in 120ms (Views: 72.5ms | ActiveRecord: 2.6ms)
+
+
+Started POST "/attachments" for 127.0.0.1 at 2016-08-31 20:21:01 -0500
+Processing by AttachmentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"MAaia7LHp2eE6R8+WqpHF2cV6n/xIT146U3Q0+Ko3TaSzDiZl0b5eKn2gqVjVhhxzLVwEPLSxjjc7TgmZ3/9BQ==", "attachment"=>{"product_id"=>"1", "file"=>#<ActionDispatch::Http::UploadedFile:0x007f30655e2030 @tempfile=#<Tempfile:/tmp/RackMultipart20160831-3532-1irhq30.jpg>, @original_filename="anonymus_cover.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"attachment[file]\"; filename=\"anonymus_cover.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Enviar"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+Command :: file -b --mime '/tmp/8566173c8db2198c015e94d9266028f820160831-3532-11nuk3j.jpg'
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Command :: file -b --mime '/tmp/8566173c8db2198c015e94d9266028f820160831-3532-tv3ws4.jpg'
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "attachments" ("product_id", "file_file_name", "file_content_type", "file_file_size", "file_updated_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["product_id", 1], ["file_file_name", "anonymus_cover.jpg"], ["file_content_type", "image/jpeg"], ["file_file_size", 3128], ["file_updated_at", "2016-09-01 01:21:01.141246"], ["created_at", "2016-09-01 01:21:01.262425"], ["updated_at", "2016-09-01 01:21:01.262425"]]
+  [1m[36m (232.7ms)[0m  [1mcommit transaction[0m
+  [1m[35mProduct Load (0.1ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT 1  [["id", 1]]
+Redirected to http://localhost:3000/products/1
+Completed 302 Found in 449ms (ActiveRecord: 233.8ms)
+
+
+Started GET "/products/1" for 127.0.0.1 at 2016-08-31 20:21:01 -0500
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProduct Load (0.1ms)[0m  [1mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered attachments/_form.haml (1.3ms)
+  Rendered products/admin.haml within layouts/application (3.6ms)
+Completed 200 OK in 69ms (Views: 65.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/products/1" for 127.0.0.1 at 2016-08-31 20:25:17 -0500
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mProduct Load (0.2ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mAttachment Load (0.3ms)[0m  [1mSELECT "attachments".* FROM "attachments" WHERE "attachments"."product_id" = ?[0m  [["product_id", 1]]
+  Rendered attachments/_form.haml (1.1ms)
+  Rendered products/admin.haml within layouts/application (61.8ms)
+Completed 200 OK in 139ms (Views: 132.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/products/1" for 127.0.0.1 at 2016-08-31 20:27:18 -0500
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mProduct Load (0.1ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mAttachment Load (0.2ms)[0m  [1mSELECT "attachments".* FROM "attachments" WHERE "attachments"."product_id" = ?[0m  [["product_id", 1]]
+  Rendered attachments/_form.haml (1.1ms)
+  Rendered products/admin.haml within layouts/application (10.7ms)
+Completed 200 OK in 73ms (Views: 69.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/Material-Design-Icons-390a078d38457ed583be9495cdfb5caa5d4b2853477c55d2d48de31759396582.woff?-g7cqhn" for 127.0.0.1 at 2016-08-31 20:27:18 -0500
+
+
+Started GET "/products/1" for 127.0.0.1 at 2016-08-31 20:28:54 -0500
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mProduct Load (0.2ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mAttachment Load (0.1ms)[0m  [1mSELECT "attachments".* FROM "attachments" WHERE "attachments"."product_id" = ?[0m  [["product_id", 1]]
+  Rendered attachments/_form.haml (1.1ms)
+  Rendered products/admin.haml within layouts/application (12.2ms)
+Completed 200 OK in 85ms (Views: 81.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/products/1" for 127.0.0.1 at 2016-08-31 20:36:06 -0500
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mProduct Load (0.2ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mAttachment Load (0.4ms)[0m  [1mSELECT "attachments".* FROM "attachments" WHERE "attachments"."product_id" = ?[0m  [["product_id", 1]]
+  Rendered attachments/_form.haml (2.6ms)
+  Rendered products/admin.haml within layouts/application (12.8ms)
+Completed 200 OK in 105ms (Views: 67.8ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/products/1" for 127.0.0.1 at 2016-08-31 20:36:49 -0500
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mProduct Load (0.3ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mAttachment Load (0.3ms)[0m  [1mSELECT "attachments".* FROM "attachments" WHERE "attachments"."product_id" = ?[0m  [["product_id", 1]]
+  Rendered attachments/_form.haml (2.6ms)
+  Rendered products/admin.haml within layouts/application (10.6ms)
+Completed 200 OK in 102ms (Views: 63.7ms | ActiveRecord: 2.7ms)
+
+
+Started DELETE "/attachments/1" for 127.0.0.1 at 2016-08-31 20:36:51 -0500
+Processing by AttachmentsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"aq5WlU+BaXH8+vmJnH/FnrZNJkky2aM5qqfeBH4h4q3IZMxnagA3btHlZBKlg5r4He28JjEqWHmfBzbx+/bCng==", "id"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mAttachment Load (0.3ms)[0m  [1mSELECT  "attachments".* FROM "attachments" WHERE "attachments"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mProduct Load (0.1ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT 1  [["id", 1]]
+Completed 500 Internal Server Error in 49ms (ActiveRecord: 0.6ms)
+
+NoMethodError (undefined method `params_has_key?' for #<AttachmentsController:0x007f30676d8e88>):
+  app/controllers/attachments_controller.rb:34:in `authenticate_owner!'
+
+
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.8ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.3ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (39.5ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.7ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (26.0ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (53.3ms)
+
+
+Started GET "/attachments/1" for 127.0.0.1 at 2016-08-31 20:37:36 -0500
+
+ActionController::RoutingError (No route matches [GET] "/attachments/1"):
+  actionpack (4.2.4) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.4) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.4) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.4) lib/rails/engine.rb:518:in `call'
+  railties (4.2.4) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /home/miguel/.rvm/rubies/ruby-2.3.1/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /home/miguel/.rvm/rubies/ruby-2.3.1/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /home/miguel/.rvm/rubies/ruby-2.3.1/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/routes/_route.html.erb (3.0ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/routes/_table.html.erb (12.9ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.0ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (59.4ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.6ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.7ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (25.8ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (51.8ms)
+
+
+Started GET "/products/1" for 127.0.0.1 at 2016-08-31 20:37:39 -0500
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProduct Load (0.2ms)[0m  [1mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mAttachment Load (0.6ms)[0m  SELECT "attachments".* FROM "attachments" WHERE "attachments"."product_id" = ?  [["product_id", 1]]
+  Rendered attachments/_form.haml (4.2ms)
+  Rendered products/admin.haml within layouts/application (15.9ms)
+Completed 200 OK in 132ms (Views: 85.6ms | ActiveRecord: 2.9ms)
+
+
+Started DELETE "/attachments/1" for 127.0.0.1 at 2016-08-31 20:37:41 -0500
+Processing by AttachmentsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"dlsmJZ9HXMiV0nOl6Ki7AXqjCqwGwj7pNHO+ZDpzeKjUkbzXusYC17jN7j7RVORn0QOQwwUxxakB01aRv6RYmw==", "id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mAttachment Load (0.2ms)[0m  SELECT  "attachments".* FROM "attachments" WHERE "attachments"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mProduct Load (0.1ms)[0m  [1mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "attachments" WHERE "attachments"."id" = ?  [["id", 1]]
+  [1m[36m (252.9ms)[0m  [1mcommit transaction[0m
+[paperclip] deleting /home/miguel/Documents/Proyectos_Ruby/ecommerce/public/system/attachments/files/000/000/001/original/anonymus_cover.jpg
+Redirected to http://localhost:3000/products/1
+Completed 302 Found in 269ms (ActiveRecord: 253.8ms)
+
+
+Started GET "/products/1" for 127.0.0.1 at 2016-08-31 20:37:42 -0500
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mProduct Load (0.1ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mAttachment Load (0.1ms)[0m  [1mSELECT "attachments".* FROM "attachments" WHERE "attachments"."product_id" = ?[0m  [["product_id", 1]]
+  Rendered attachments/_form.haml (1.0ms)
+  Rendered products/admin.haml within layouts/application (3.8ms)
+Completed 200 OK in 68ms (Views: 64.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/products/1" for 127.0.0.1 at 2016-08-31 20:46:30 -0500
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mProduct Load (0.2ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mAttachment Load (0.2ms)[0m  [1mSELECT "attachments".* FROM "attachments" WHERE "attachments"."product_id" = ?[0m  [["product_id", 1]]
+  Rendered attachments/_form.haml (3.5ms)
+  Rendered products/admin.haml within layouts/application (13.7ms)
+Completed 200 OK in 113ms (Views: 72.1ms | ActiveRecord: 2.4ms)
+
+
+Started POST "/attachments" for 127.0.0.1 at 2016-08-31 20:46:34 -0500
+Processing by AttachmentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"zmhFjaRkCj8TrOdXCOuHqTkIeZgA0gZIHnJLN4agwYxsot9/geVUID6zeswxF9jPkqjj9wMh/Qgr0qPCA3fhvw==", "attachment"=>{"product_id"=>"1", "file"=>#<ActionDispatch::Http::UploadedFile:0x000000053f6d08 @tempfile=#<Tempfile:/tmp/RackMultipart20160831-3532-gv0ha6.jpg>, @original_filename="anonymus_cover.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"attachment[file]\"; filename=\"anonymus_cover.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Enviar"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mProduct Load (0.1ms)[0m  [1mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+Command :: file -b --mime '/tmp/8566173c8db2198c015e94d9266028f820160831-3532-ilp8zq.jpg'
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Command :: file -b --mime '/tmp/8566173c8db2198c015e94d9266028f820160831-3532-13qbxhw.jpg'
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "attachments" ("product_id", "file_file_name", "file_content_type", "file_file_size", "file_updated_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["product_id", 1], ["file_file_name", "anonymus_cover.jpg"], ["file_content_type", "image/jpeg"], ["file_file_size", 3128], ["file_updated_at", "2016-09-01 01:46:34.439246"], ["created_at", "2016-09-01 01:46:34.446880"], ["updated_at", "2016-09-01 01:46:34.446880"]]
+  [1m[36m (235.3ms)[0m  [1mcommit transaction[0m
+  [1m[35mProduct Load (0.1ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT 1  [["id", 1]]
+Redirected to http://localhost:3000/products/1
+Completed 302 Found in 331ms (ActiveRecord: 236.4ms)
+
+
+Started GET "/products/1" for 127.0.0.1 at 2016-08-31 20:46:34 -0500
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProduct Load (0.1ms)[0m  [1mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mAttachment Load (0.1ms)[0m  SELECT "attachments".* FROM "attachments" WHERE "attachments"."product_id" = ?  [["product_id", 1]]
+  Rendered attachments/_form.haml (1.3ms)
+  Rendered products/admin.haml within layouts/application (5.0ms)
+Completed 200 OK in 64ms (Views: 60.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/attachments/2" for 127.0.0.1 at 2016-08-31 20:46:36 -0500
+Processing by AttachmentsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Redirected to http://localhost:3000/
+Filter chain halted as :authenticate_owner! rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-31 20:46:36 -0500
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.haml within layouts/application (1.1ms)
+Completed 200 OK in 75ms (Views: 74.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/favicon-92e86d463e909754599d66730477622cd3dd0b9bff58c47c9c38bebceb8073e5.ico" for 127.0.0.1 at 2016-08-31 20:46:46 -0500
+
+ActionController::RoutingError (No route matches [GET] "/assets/favicon-92e86d463e909754599d66730477622cd3dd0b9bff58c47c9c38bebceb8073e5.ico"):
+  actionpack (4.2.4) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.4) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.4) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.4) lib/rails/engine.rb:518:in `call'
+  railties (4.2.4) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /home/miguel/.rvm/rubies/ruby-2.3.1/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /home/miguel/.rvm/rubies/ruby-2.3.1/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /home/miguel/.rvm/rubies/ruby-2.3.1/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/routes/_route.html.erb (3.0ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/routes/_table.html.erb (3.4ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.8ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (44.3ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (25.8ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (54.1ms)
+
+
+Started GET "/products/1" for 127.0.0.1 at 2016-08-31 20:46:48 -0500
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProduct Load (0.1ms)[0m  [1mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mAttachment Load (0.2ms)[0m  SELECT "attachments".* FROM "attachments" WHERE "attachments"."product_id" = ?  [["product_id", 1]]
+  Rendered attachments/_form.haml (1.7ms)
+  Rendered products/admin.haml within layouts/application (7.0ms)
+Completed 200 OK in 78ms (Views: 73.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-31 20:47:29 -0500
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/landing (6.2ms)
+Completed 200 OK in 83ms (Views: 82.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/common.self-340ecec5094db712a3ab19f54bd7ed849a220c4d289b554bb388d39b0d02466d.css?body=1" for 127.0.0.1 at 2016-08-31 20:47:30 -0500
+
+
+Started GET "/assets/bootstrap-material-design/material.self-a269dc7413ed51d1938473ca64105719ee2887e81346a8302ff3a8848e38140c.css?body=1" for 127.0.0.1 at 2016-08-31 20:47:30 -0500
+
+
+Started GET "/assets/land.self-6c459ca3259646730d06c14fd3a84475da9f261c8bb1ad9164e3c8cca42d03f1.css?body=1" for 127.0.0.1 at 2016-08-31 20:47:30 -0500
+
+
+Started GET "/assets/bootstrap-material-design/snackbar.self-7fbc09b4c83aec44967aa4f2b4fbba3c3f62c95560f2a99321af99e72d60664e.css?body=1" for 127.0.0.1 at 2016-08-31 20:47:30 -0500
+
+
+Started GET "/assets/bootstrap-material-design/index.self-f9ecc503685523b804a0f02a2ae501bb190b025b8354ec053661d70988296034.css?body=1" for 127.0.0.1 at 2016-08-31 20:47:30 -0500
+
+
+Started GET "/assets/bootstrap-material-design/ripples.self-138c042e103000c2c279cbbe8cf30d1c48f18c24b7100658173a02680c73bb1f.css?body=1" for 127.0.0.1 at 2016-08-31 20:47:30 -0500
+
+
+Started GET "/assets/landing.self-39e937c38e18a6e30a0df8f358daffb7d0f9ef8e553222083a4197eb152141a5.css?body=1" for 127.0.0.1 at 2016-08-31 20:47:30 -0500
+
+
+Started GET "/assets/bootstrap.self-b38817c3e3a3049abb1fc08dd6ae448b23330f8453226efdb074710209474f75.js?body=1" for 127.0.0.1 at 2016-08-31 20:47:30 -0500
+
+
+Started GET "/assets/bootstrap-material-design/jquery.nouislider.self-14a408d2e3a637aad5505ea30dd659b99660f0beac7b100510f6abf6dd67728f.js?body=1" for 127.0.0.1 at 2016-08-31 20:47:30 -0500
+
+
+Started GET "/assets/bootstrap-material-design/material.self-5aae70c7a657f0096b3b64d2f7c073024912d5c525488d25ccfc580590647a69.js?body=1" for 127.0.0.1 at 2016-08-31 20:47:30 -0500
+
+
+Started GET "/assets/bootstrap-material-design/ripples.self-568842904f97a152a76ff3ed5995d21aabf5bd56e9f658b9929744dc581778ef.js?body=1" for 127.0.0.1 at 2016-08-31 20:47:30 -0500
+
+
+Started GET "/assets/bootstrap-material-design/snackbar.self-020091f46c96844f46d9e6baa338d932f5cf4c9e998e7fe2136ab5d420d9b0c3.js?body=1" for 127.0.0.1 at 2016-08-31 20:47:30 -0500
+
+
+Started GET "/assets/bootstrap-material-design/index.self-545c38b0922de19734fbffde62792c37c2aef6a3216cfa472449173165220f7d.js?body=1" for 127.0.0.1 at 2016-08-31 20:47:30 -0500
+
+
+Started GET "/assets/attachments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-08-31 20:47:30 -0500
+
+
+Started GET "/assets/products.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-08-31 20:47:30 -0500
+
+
+Started GET "/assets/welcome.self-a90c34088065d95643be9eb6a47c8904cc3347c608b3c58f2b686c87d89a98e7.js?body=1" for 127.0.0.1 at 2016-08-31 20:47:30 -0500
+
+
+Started GET "/assets/forms.self-ea7e28b796676eb960601b70fdcf7f1d5ae470d3bfe6fc5d878712e5dd0913ff.js?body=1" for 127.0.0.1 at 2016-08-31 20:47:30 -0500
+
+
+Started GET "/assets/application.self-7862a8a8b42407b4741a1adeeea35f0d13ddc4f702ec532adb0674491d296495.js?body=1" for 127.0.0.1 at 2016-08-31 20:47:30 -0500
+
+
+Started GET "/assets/email.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-08-31 20:47:30 -0500
+
+
+Started GET "/assets/tiendus-2fa14951f8e36d63a662021b41f48fc555a7e88aa247061b97b14b0b070476c7.png" for 127.0.0.1 at 2016-08-31 20:47:30 -0500
+
+
+Started GET "/assets/mono-4be47b33f356e652f8502fccff79d5ee9aafaff2ac4608b4485490a38ed85f62.png" for 127.0.0.1 at 2016-08-31 20:47:30 -0500
+
+
+Started GET "/assets/upload-icon-a1104a29ad8a94a760433212024332b16ef09f20f8770a0e40391ac43d87ef54.png" for 127.0.0.1 at 2016-08-31 20:47:30 -0500
+
+
+Started GET "/assets/youtube-icon-8d7bb72eb0df06ad7d8b772e6546708c8067ed0b2fbf00516641124395aad945.png" for 127.0.0.1 at 2016-08-31 20:47:30 -0500
+
+
+Started GET "/assets/money-icon-7a338c32702e2b1e7c4fab5039fafd25ad13380fd5326353a1ebd19d2b2f6674.png" for 127.0.0.1 at 2016-08-31 20:47:30 -0500
+
+
+Started GET "/assets/media-icons-ce4e314d0bd2ea04b3b2a2ba5640e1a8608acc26a1710108dee1a51561be6d93.png" for 127.0.0.1 at 2016-08-31 20:47:30 -0500
+
+
+Started GET "/assets/Kostic-Bold-83a798bffbbd07d0333c84ed7e1ac0b3cd0f77841fec3b6e2329ba23942f1bfb.ttf" for 127.0.0.1 at 2016-08-31 20:47:30 -0500
+
+
+Started GET "/assets/Kostic-Thin-421df589b5c358296f015fe86c2a985889bbe6e3e2159db74830ec58f45efdb1.ttf" for 127.0.0.1 at 2016-08-31 20:47:30 -0500
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2016-08-31 20:47:37 -0500
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/devise-4.2.0/app/views/devise/shared/_links.html.erb (0.4ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/devise-4.2.0/app/views/devise/registrations/new.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 138ms (Views: 136.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/app.self-e64a8a1ec7a0b51596de2765663a5d4ab2c2f7918f714f4a8ae79109625d9a47.css?body=1" for 127.0.0.1 at 2016-08-31 20:47:37 -0500
+
+
+Started GET "/assets/application.self-f78feb67e8049abf326e5f19e9ab2ba7f61b9f1fb25454cd35f52b7a3ef8936a.css?body=1" for 127.0.0.1 at 2016-08-31 20:47:37 -0500
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2016-08-31 20:47:48 -0500
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/devise-4.2.0/app/views/devise/shared/_links.html.erb (0.3ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/devise-4.2.0/app/views/devise/registrations/new.html.erb within layouts/application (5.5ms)
+Completed 200 OK in 77ms (Views: 75.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-08-31 20:47:53 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/devise-4.2.0/app/views/devise/shared/_links.html.erb (0.5ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/devise-4.2.0/app/views/devise/sessions/new.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 73ms (Views: 71.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-31 20:48:13 -0500
+Processing by WelcomeController#unregistered as HTML
+  Rendered welcome/unregistered.haml within layouts/landing (11.5ms)
+Completed 200 OK in 82ms (Views: 82.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-08-31 20:48:15 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/devise-4.2.0/app/views/devise/shared/_links.html.erb (0.8ms)
+  Rendered /home/miguel/.rvm/gems/ruby-2.3.1@tienda_rails4/gems/devise-4.2.0/app/views/devise/sessions/new.html.erb within layouts/application (5.1ms)
+Completed 200 OK in 77ms (Views: 75.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-08-31 20:48:21 -0500
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"PIN5wgdGd0JcchHPLsqvQWUOJAhyDYlATT9lWV/Tkf/hHY5VSMk8wpx9kW5K2aTpkVzxJcIRVRKrBGK/fitzJg==", "user"=>{"email"=>"miguelarenas98@hotmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["email", "miguelarenas98@hotmail.com"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["last_sign_in_at", "2016-09-01 01:13:44.263654"], ["current_sign_in_at", "2016-09-01 01:48:21.476889"], ["sign_in_count", 4], ["updated_at", "2016-09-01 01:48:21.478047"], ["id", 1]]
+  [1m[35m (104.8ms)[0m  commit transaction
+Redirected to http://localhost:3000/
+Completed 302 Found in 333ms (ActiveRecord: 105.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-31 20:48:21 -0500
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.haml within layouts/application (0.4ms)
+Completed 200 OK in 66ms (Views: 65.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/products/1" for 127.0.0.1 at 2016-08-31 20:48:27 -0500
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mProduct Load (0.1ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mAttachment Load (0.1ms)[0m  [1mSELECT "attachments".* FROM "attachments" WHERE "attachments"."product_id" = ?[0m  [["product_id", 1]]
+  Rendered attachments/_form.haml (1.2ms)
+  Rendered products/admin.haml within layouts/application (5.0ms)
+Completed 200 OK in 75ms (Views: 71.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/attachments/2" for 127.0.0.1 at 2016-08-31 20:48:28 -0500
+Processing by AttachmentsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Redirected to http://localhost:3000/
+Filter chain halted as :authenticate_owner! rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-31 20:48:28 -0500
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.haml within layouts/application (0.5ms)
+Completed 200 OK in 66ms (Views: 65.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/products/1" for 127.0.0.1 at 2016-08-31 20:49:18 -0500
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mProduct Load (0.2ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mAttachment Load (0.4ms)[0m  [1mSELECT "attachments".* FROM "attachments" WHERE "attachments"."product_id" = ?[0m  [["product_id", 1]]
+  Rendered attachments/_form.haml (3.3ms)
+  Rendered products/admin.haml within layouts/application (14.7ms)
+Completed 200 OK in 131ms (Views: 75.3ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/attachments/2" for 127.0.0.1 at 2016-08-31 20:49:19 -0500
+Processing by AttachmentsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Redirected to http://localhost:3000/
+Filter chain halted as :authenticate_owner! rendered or redirected
+Completed 302 Found in 5ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-08-31 20:49:19 -0500
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.haml within layouts/application (0.5ms)
+Completed 200 OK in 79ms (Views: 79.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/products/1" for 127.0.0.1 at 2016-08-31 20:50:29 -0500
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mProduct Load (0.2ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.9ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mAttachment Load (0.3ms)[0m  [1mSELECT "attachments".* FROM "attachments" WHERE "attachments"."product_id" = ?[0m  [["product_id", 1]]
+  Rendered attachments/_form.haml (3.1ms)
+  Rendered products/admin.haml within layouts/application (11.7ms)
+Completed 200 OK in 122ms (Views: 75.2ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/attachments/2" for 127.0.0.1 at 2016-08-31 20:50:31 -0500
+Processing by AttachmentsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mAttachment Load (0.3ms)[0m  [1mSELECT  "attachments".* FROM "attachments" WHERE "attachments"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mProduct Load (0.1ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+Sent file :rails:root/archivos/2/original/anonymus_cover.jpg (0.1ms)
+Completed 200 OK in 12ms (ActiveRecord: 0.8ms)
+
+
+Started GET "/products/1" for 127.0.0.1 at 2016-08-31 20:50:40 -0500
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mProduct Load (0.1ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mAttachment Load (0.2ms)[0m  [1mSELECT "attachments".* FROM "attachments" WHERE "attachments"."product_id" = ?[0m  [["product_id", 1]]
+  Rendered attachments/_form.haml (1.4ms)
+  Rendered products/admin.haml within layouts/application (8.8ms)
+Completed 200 OK in 93ms (Views: 89.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/attachments/2" for 127.0.0.1 at 2016-08-31 20:50:41 -0500
+Processing by AttachmentsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mAttachment Load (0.1ms)[0m  [1mSELECT  "attachments".* FROM "attachments" WHERE "attachments"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mProduct Load (0.1ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+Sent file :rails:root/archivos/2/original/anonymus_cover.jpg (0.1ms)
+Completed 200 OK in 5ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/attachments/2" for 127.0.0.1 at 2016-08-31 20:51:51 -0500
+Processing by AttachmentsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mAttachment Load (0.2ms)[0m  [1mSELECT  "attachments".* FROM "attachments" WHERE "attachments"."id" = ? LIMIT 1[0m  [["id", 2]]
+Sent file :rails:root/archivos/2/original/anonymus_cover.jpg (0.1ms)
+Completed 200 OK in 29ms (ActiveRecord: 1.5ms)
+
+
+Started GET "/attachments/2" for 127.0.0.1 at 2016-08-31 20:52:02 -0500
+Processing by AttachmentsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mAttachment Load (0.1ms)[0m  [1mSELECT  "attachments".* FROM "attachments" WHERE "attachments"."id" = ? LIMIT 1[0m  [["id", 2]]
+Sent file :rails:root/archivos/2/original/anonymus_cover.jpg (0.1ms)
+Completed 200 OK in 4ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/products/1" for 127.0.0.1 at 2016-08-31 20:52:14 -0500
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mProduct Load (0.2ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mAttachment Load (0.2ms)[0m  [1mSELECT "attachments".* FROM "attachments" WHERE "attachments"."product_id" = ?[0m  [["product_id", 1]]
+  Rendered attachments/_form.haml (3.1ms)
+  Rendered products/admin.haml within layouts/application (14.1ms)
+Completed 200 OK in 94ms (Views: 73.9ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/attachments/2" for 127.0.0.1 at 2016-08-31 20:52:16 -0500
+Processing by AttachmentsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mAttachment Load (0.2ms)[0m  [1mSELECT  "attachments".* FROM "attachments" WHERE "attachments"."id" = ? LIMIT 1[0m  [["id", 2]]
+Sent file :rails:root/archivos/2/original/anonymus_cover.jpg (0.1ms)
+Completed 200 OK in 4ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/attachments/2" for 127.0.0.1 at 2016-08-31 20:52:21 -0500
+Processing by AttachmentsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mAttachment Load (0.1ms)[0m  [1mSELECT  "attachments".* FROM "attachments" WHERE "attachments"."id" = ? LIMIT 1[0m  [["id", 2]]
+Sent file :rails:root/archivos/2/original/anonymus_cover.jpg (0.1ms)
+Completed 200 OK in 3ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/attachments/2" for 127.0.0.1 at 2016-08-31 20:52:24 -0500
+Processing by AttachmentsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mAttachment Load (0.2ms)[0m  [1mSELECT  "attachments".* FROM "attachments" WHERE "attachments"."id" = ? LIMIT 1[0m  [["id", 2]]
+Sent file :rails:root/archivos/2/original/anonymus_cover.jpg (0.1ms)
+Completed 200 OK in 3ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/attachments/2" for 127.0.0.1 at 2016-08-31 20:52:27 -0500
+Processing by AttachmentsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mAttachment Load (0.1ms)[0m  [1mSELECT  "attachments".* FROM "attachments" WHERE "attachments"."id" = ? LIMIT 1[0m  [["id", 2]]
+Sent file :rails:root/archivos/2/original/anonymus_cover.jpg (0.1ms)
+Completed 200 OK in 3ms (ActiveRecord: 0.3ms)
