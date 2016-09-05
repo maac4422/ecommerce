@@ -1,0 +1,21 @@
+.card.large-padding
+	%table.table.table-striped.table-hover.medium#table_shopping_cart
+		%thead
+			%td Producto
+			%td Costo
+			%td Acciones
+		%tbody
+			-@shopping_cart.in_shopping_carts.each do |i_sh|
+				-product = i_sh.product
+				%tr{id: "#{product.id}"}
+					%td= product.name
+					%td= product.pricing
+					%td Eliminar
+	.top-space.large-padding.text-center#payment_form
+		%p.medium
+			%strong
+				Total: $
+				=@shopping_cart.total
+	.top-space
+		=render "payments/buttons" 
+

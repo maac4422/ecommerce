@@ -3948,3 +3948,861 @@ Processing by ProductsController#destroy as HTML
 Redirected to http://test.host/products
 Completed 302 Found in 4ms (ActiveRecord: 0.6ms)
   [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36m (140.3ms)[0m  [1mCREATE TABLE "attachments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "product_id" integer, "file_file_name" varchar, "file_content_type" varchar, "file_file_size" integer, "file_updated_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (133.0ms)[0m  [1mCREATE  INDEX "index_attachments_on_product_id" ON "attachments" ("product_id")[0m
+  [1m[35m (143.7ms)[0m  CREATE TABLE "in_shopping_carts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "product_id" integer, "shopping_cart_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (143.4ms)[0m  [1mCREATE  INDEX "index_in_shopping_carts_on_product_id" ON "in_shopping_carts" ("product_id")[0m
+  [1m[35m (0.3ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_in_shopping_carts_on_product_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_in_shopping_carts_on_product_id' AND type='index'
+
+  [1m[36m (141.5ms)[0m  [1mCREATE  INDEX "index_in_shopping_carts_on_shopping_cart_id" ON "in_shopping_carts" ("shopping_cart_id")[0m
+  [1m[35m (143.2ms)[0m  CREATE TABLE "my_emails" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "ip" varchar, "state" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (143.4ms)[0m  [1mCREATE TABLE "my_payments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "ip" varchar, "status" varchar, "fee" decimal(6,2), "paypal_id" varchar, "total" decimal(9,2), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (111.4ms)[0m  CREATE TABLE "products" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "pricing" decimal(10,2), "description" text, "user_id" integer, "avatar_file_name" varchar, "avatar_content_type" varchar, "avatar_file_size" integer, "avatar_updated_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (121.4ms)[0m  [1mCREATE  INDEX "index_products_on_user_id" ON "products" ("user_id")[0m
+  [1m[35m (116.2ms)[0m  CREATE TABLE "shopping_carts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "status" integer DEFAULT 0, "ip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (143.3ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (143.1ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36m (0.3ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (142.4ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36m (131.7ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (143.7ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.3ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (143.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160904173334')
+  [1m[36m (122.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160828175131')[0m
+  [1m[35m (144.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160828223949')
+  [1m[36m (145.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160904171130')[0m
+  [1m[35m (144.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160904173221')
+  [1m[36m (133.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160901004526')[0m
+  [1m[35m (122.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160829012238')
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "shopping_carts" ("ip", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["ip", "127.0.0.01"], ["created_at", "2016-09-04 17:52:19.155429"], ["updated_at", "2016-09-04 17:52:19.155429"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "shopping_carts" SET "status" = ?, "updated_at" = ? WHERE "shopping_carts"."id" = ?  [["status", 1], ["updated_at", "2016-09-04 17:52:19.161805"], ["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "shopping_carts" ("ip", "created_at", "updated_at") VALUES (?, ?, ?)  [["ip", "127.0.0.01"], ["created_at", "2016-09-04 17:53:40.413195"], ["updated_at", "2016-09-04 17:53:40.413195"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "shopping_carts" SET "status" = ?, "updated_at" = ? WHERE "shopping_carts"."id" = ?[0m  [["status", 1], ["updated_at", "2016-09-04 17:53:40.419545"], ["id", 1]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.5ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36m (118.5ms)[0m  [1mCREATE TABLE "attachments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "product_id" integer, "file_file_name" varchar, "file_content_type" varchar, "file_file_size" integer, "file_updated_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.2ms)[0m  select sqlite_version(*)
+  [1m[36m (132.2ms)[0m  [1mCREATE  INDEX "index_attachments_on_product_id" ON "attachments" ("product_id")[0m
+  [1m[35m (120.9ms)[0m  CREATE TABLE "in_shopping_carts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "product_id" integer, "shopping_cart_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (144.1ms)[0m  [1mCREATE  INDEX "index_in_shopping_carts_on_product_id" ON "in_shopping_carts" ("product_id")[0m
+  [1m[35m (0.5ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_in_shopping_carts_on_product_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_in_shopping_carts_on_product_id' AND type='index'
+
+  [1m[36m (152.8ms)[0m  [1mCREATE  INDEX "index_in_shopping_carts_on_shopping_cart_id" ON "in_shopping_carts" ("shopping_cart_id")[0m
+  [1m[35m (142.6ms)[0m  CREATE TABLE "my_emails" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "ip" varchar, "state" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (142.7ms)[0m  [1mCREATE TABLE "my_payments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "ip" varchar, "status" varchar, "fee" decimal(6,2), "paypal_id" varchar, "total" decimal(9,2), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (165.9ms)[0m  CREATE TABLE "products" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "pricing" integer, "description" text, "user_id" integer, "avatar_file_name" varchar, "avatar_content_type" varchar, "avatar_file_size" integer, "avatar_updated_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (120.5ms)[0m  [1mCREATE  INDEX "index_products_on_user_id" ON "products" ("user_id")[0m
+  [1m[35m (113.9ms)[0m  CREATE TABLE "shopping_carts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "status" integer DEFAULT 0, "ip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (142.2ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (110.2ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36m (129.1ms)[0m  [1mCREATE TABLE "attachments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "product_id" integer, "file_file_name" varchar, "file_content_type" varchar, "file_file_size" integer, "file_updated_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.2ms)[0m  select sqlite_version(*)
+  [1m[36m (121.4ms)[0m  [1mCREATE  INDEX "index_attachments_on_product_id" ON "attachments" ("product_id")[0m
+  [1m[35m (143.7ms)[0m  CREATE TABLE "in_shopping_carts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "product_id" integer, "shopping_cart_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (120.9ms)[0m  [1mCREATE  INDEX "index_in_shopping_carts_on_product_id" ON "in_shopping_carts" ("product_id")[0m
+  [1m[35m (0.3ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_in_shopping_carts_on_product_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_in_shopping_carts_on_product_id' AND type='index'
+
+  [1m[36m (142.6ms)[0m  [1mCREATE  INDEX "index_in_shopping_carts_on_shopping_cart_id" ON "in_shopping_carts" ("shopping_cart_id")[0m
+  [1m[35m (143.7ms)[0m  CREATE TABLE "my_emails" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "ip" varchar, "state" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (142.9ms)[0m  [1mCREATE TABLE "my_payments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "ip" varchar, "status" varchar, "fee" decimal(6,2), "paypal_id" varchar, "total" decimal(9,2), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (120.5ms)[0m  CREATE TABLE "products" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "pricing" integer, "description" text, "user_id" integer, "avatar_file_name" varchar, "avatar_content_type" varchar, "avatar_file_size" integer, "avatar_updated_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (144.2ms)[0m  [1mCREATE  INDEX "index_products_on_user_id" ON "products" ("user_id")[0m
+  [1m[35m (137.5ms)[0m  CREATE TABLE "shopping_carts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "status" integer DEFAULT 0, "ip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (142.2ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (132.6ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36m (0.3ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (142.3ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36m (140.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (146.3ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.3ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (143.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160904204217')
+  [1m[36m (144.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160828175131')[0m
+  [1m[35m (167.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160828223949')
+  [1m[36m (122.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160904171130')[0m
+  [1m[35m (144.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160904173221')
+  [1m[36m (111.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160901004526')[0m
+  [1m[35m (111.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160829012238')
+  [1m[36m (111.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160904173334')[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "shopping_carts" ("ip", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["ip", "127.0.0.01"], ["created_at", "2016-09-04 21:08:36.681786"], ["updated_at", "2016-09-04 21:08:36.681786"]]
+  [1m[35m (121.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel1@hotmail.com' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "miguel1@hotmail.com"], ["encrypted_password", "$2a$04$bG1oCZxHQCD/P.EFTxYuGuCTYNEOhfdlSgBy.nXLxVFCPWWSkjtx2"], ["created_at", "2016-09-04 21:08:36.905367"], ["updated_at", "2016-09-04 21:08:36.905367"]]
+  [1m[35m (136.1ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "products" ("name", "pricing", "description", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "MyString"], ["pricing", 100], ["description", "MyText"], ["user_id", 1], ["created_at", "2016-09-04 21:08:37.057378"], ["updated_at", "2016-09-04 21:08:37.057378"]]
+  [1m[36m (138.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel2@hotmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["email", "miguel2@hotmail.com"], ["encrypted_password", "$2a$04$facDWrpgJw2jZ0W5ldGS4uEHC84A0FgjM6R3MLXnQLweaB.TYPP/i"], ["created_at", "2016-09-04 21:08:37.211099"], ["updated_at", "2016-09-04 21:08:37.211099"]]
+  [1m[36m (141.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "products" ("name", "pricing", "description", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "MyString"], ["pricing", 100], ["description", "MyText"], ["user_id", 2], ["created_at", "2016-09-04 21:08:37.358810"], ["updated_at", "2016-09-04 21:08:37.358810"]]
+  [1m[35m (149.5ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel3@hotmail.com' LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "miguel3@hotmail.com"], ["encrypted_password", "$2a$04$aeAvIN3UcG7KUKq2MhZCMe9wg.oV4Dm8FtVBNFKywBJU4SEutbBTa"], ["created_at", "2016-09-04 21:08:37.520704"], ["updated_at", "2016-09-04 21:08:37.520704"]]
+  [1m[35m (211.8ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "products" ("name", "pricing", "description", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "MyString"], ["pricing", 100], ["description", "MyText"], ["user_id", 3], ["created_at", "2016-09-04 21:08:37.738295"], ["updated_at", "2016-09-04 21:08:37.738295"]]
+  [1m[36m (162.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel4@hotmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["email", "miguel4@hotmail.com"], ["encrypted_password", "$2a$04$rb/uRp85GKmMzEb37G0N3eALTWTJ.lGxvZigqBuVt6H9tCRKrnm1i"], ["created_at", "2016-09-04 21:08:37.914352"], ["updated_at", "2016-09-04 21:08:37.914352"]]
+  [1m[36m (121.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "products" ("name", "pricing", "description", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "MyString"], ["pricing", 100], ["description", "MyText"], ["user_id", 4], ["created_at", "2016-09-04 21:08:38.041796"], ["updated_at", "2016-09-04 21:08:38.041796"]]
+  [1m[35m (116.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel5@hotmail.com' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "miguel5@hotmail.com"], ["encrypted_password", "$2a$04$ec6rproRSpFHHZ4JIJ3DdeOVR7lr741gUNhLHxGEntijgPQZeb3FG"], ["created_at", "2016-09-04 21:08:38.166308"], ["updated_at", "2016-09-04 21:08:38.166308"]]
+  [1m[35m (116.4ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "products" ("name", "pricing", "description", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "MyString"], ["pricing", 100], ["description", "MyText"], ["user_id", 5], ["created_at", "2016-09-04 21:08:38.287340"], ["updated_at", "2016-09-04 21:08:38.287340"]]
+  [1m[36m (116.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "shopping_carts" ("ip", "created_at", "updated_at") VALUES (?, ?, ?)  [["ip", "127.0.0.01"], ["created_at", "2016-09-04 21:08:38.420495"], ["updated_at", "2016-09-04 21:08:38.420495"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "shopping_carts" SET "status" = ?, "updated_at" = ? WHERE "shopping_carts"."id" = ?[0m  [["status", 1], ["updated_at", "2016-09-04 21:08:38.424154"], ["id", 2]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "shopping_carts" ("ip", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["ip", "127.0.0.01"], ["created_at", "2016-09-04 21:12:48.410528"], ["updated_at", "2016-09-04 21:12:48.410528"]]
+  [1m[35m (131.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel1@hotmail.com' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36m (144.3ms)[0m  [1mCREATE TABLE "attachments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "product_id" integer, "file_file_name" varchar, "file_content_type" varchar, "file_file_size" integer, "file_updated_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.2ms)[0m  select sqlite_version(*)
+  [1m[36m (132.7ms)[0m  [1mCREATE  INDEX "index_attachments_on_product_id" ON "attachments" ("product_id")[0m
+  [1m[35m (144.1ms)[0m  CREATE TABLE "in_shopping_carts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "product_id" integer, "shopping_cart_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (166.6ms)[0m  [1mCREATE  INDEX "index_in_shopping_carts_on_product_id" ON "in_shopping_carts" ("product_id")[0m
+  [1m[35m (0.4ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_in_shopping_carts_on_product_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_in_shopping_carts_on_product_id' AND type='index'
+
+  [1m[36m (152.9ms)[0m  [1mCREATE  INDEX "index_in_shopping_carts_on_shopping_cart_id" ON "in_shopping_carts" ("shopping_cart_id")[0m
+  [1m[35m (144.3ms)[0m  CREATE TABLE "my_emails" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "ip" varchar, "state" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (143.1ms)[0m  [1mCREATE TABLE "my_payments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "ip" varchar, "status" varchar, "fee" decimal(6,2), "paypal_id" varchar, "total" decimal(9,2), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (155.1ms)[0m  CREATE TABLE "products" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "pricing" integer, "description" text, "user_id" integer, "avatar_file_name" varchar, "avatar_content_type" varchar, "avatar_file_size" integer, "avatar_updated_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (110.6ms)[0m  [1mCREATE  INDEX "index_products_on_user_id" ON "products" ("user_id")[0m
+  [1m[35m (107.3ms)[0m  CREATE TABLE "shopping_carts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "status" integer DEFAULT 0, "ip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (121.7ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (111.0ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (110.7ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36m (133.3ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (155.9ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.5ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (155.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160904204217')
+  [1m[36m (155.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160828175131')[0m
+  [1m[35m (156.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160828223949')
+  [1m[36m (133.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160904171130')[0m
+  [1m[35m (155.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160904173221')
+  [1m[36m (156.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160901004526')[0m
+  [1m[35m (155.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160829012238')
+  [1m[36m (155.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160904173334')[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "shopping_carts" ("ip", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["ip", "127.0.0.01"], ["created_at", "2016-09-04 21:13:50.905646"], ["updated_at", "2016-09-04 21:13:50.905646"]]
+  [1m[35m (188.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel1@hotmail.com' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "miguel1@hotmail.com"], ["encrypted_password", "$2a$04$cZxTazQW3se6TtazS9MyH.fg6Gr1nFPgWcFKGqsoZhZOp0KP9wuCS"], ["created_at", "2016-09-04 21:13:51.179941"], ["updated_at", "2016-09-04 21:13:51.179941"]]
+  [1m[35m (116.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "products" ("name", "pricing", "description", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "MyString"], ["pricing", 100], ["description", "MyText"], ["user_id", 1], ["created_at", "2016-09-04 21:13:51.306556"], ["updated_at", "2016-09-04 21:13:51.306556"]]
+  [1m[36m (123.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel2@hotmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["email", "miguel2@hotmail.com"], ["encrypted_password", "$2a$04$zku184s/bjxGJbkj0Qombul9JMKSvuWvDCkplnFYR70k1ObEEMI/W"], ["created_at", "2016-09-04 21:13:51.439211"], ["updated_at", "2016-09-04 21:13:51.439211"]]
+  [1m[36m (114.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "products" ("name", "pricing", "description", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "MyString"], ["pricing", 100], ["description", "MyText"], ["user_id", 2], ["created_at", "2016-09-04 21:13:51.558552"], ["updated_at", "2016-09-04 21:13:51.558552"]]
+  [1m[35m (128.1ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel3@hotmail.com' LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "miguel3@hotmail.com"], ["encrypted_password", "$2a$04$OUmH9S7Pzr.lOmygbVfH.O/5fps0AXJBvp670NNyvCwNUI4W2WZa6"], ["created_at", "2016-09-04 21:13:51.700278"], ["updated_at", "2016-09-04 21:13:51.700278"]]
+  [1m[35m (133.3ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "products" ("name", "pricing", "description", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "MyString"], ["pricing", 100], ["description", "MyText"], ["user_id", 3], ["created_at", "2016-09-04 21:13:51.839896"], ["updated_at", "2016-09-04 21:13:51.839896"]]
+  [1m[36m (139.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel4@hotmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["email", "miguel4@hotmail.com"], ["encrypted_password", "$2a$04$B8/xh0/UgsRJk1Slsv/Q8.5ALi90SkY1xrsYwK4G1lACD5BieAIY6"], ["created_at", "2016-09-04 21:13:51.991375"], ["updated_at", "2016-09-04 21:13:51.991375"]]
+  [1m[36m (122.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "products" ("name", "pricing", "description", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "MyString"], ["pricing", 100], ["description", "MyText"], ["user_id", 4], ["created_at", "2016-09-04 21:13:52.118898"], ["updated_at", "2016-09-04 21:13:52.118898"]]
+  [1m[35m (138.6ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel5@hotmail.com' LIMIT 1
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "miguel5@hotmail.com"], ["encrypted_password", "$2a$04$oesb87xugcpQTf0/oOic2ehjXRmjj36uuAjzUixa3ziKvtMMm1sXG"], ["created_at", "2016-09-04 21:13:52.271878"], ["updated_at", "2016-09-04 21:13:52.271878"]]
+  [1m[35m (108.8ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "products" ("name", "pricing", "description", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "MyString"], ["pricing", 100], ["description", "MyText"], ["user_id", 5], ["created_at", "2016-09-04 21:13:52.387276"], ["updated_at", "2016-09-04 21:13:52.387276"]]
+  [1m[36m (149.6ms)[0m  [1mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "shopping_carts" ("ip", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["ip", "127.0.0.01"], ["created_at", "2016-09-04 21:14:17.463321"], ["updated_at", "2016-09-04 21:14:17.463321"]]
+  [1m[35m (121.8ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel1@hotmail.com' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36m (107.5ms)[0m  [1mCREATE TABLE "attachments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "product_id" integer, "file_file_name" varchar, "file_content_type" varchar, "file_file_size" integer, "file_updated_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (110.8ms)[0m  [1mCREATE  INDEX "index_attachments_on_product_id" ON "attachments" ("product_id")[0m
+  [1m[35m (144.1ms)[0m  CREATE TABLE "in_shopping_carts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "product_id" integer, "shopping_cart_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (135.4ms)[0m  [1mCREATE  INDEX "index_in_shopping_carts_on_product_id" ON "in_shopping_carts" ("product_id")[0m
+  [1m[35m (0.2ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_in_shopping_carts_on_product_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_in_shopping_carts_on_product_id' AND type='index'
+
+  [1m[36m (121.2ms)[0m  [1mCREATE  INDEX "index_in_shopping_carts_on_shopping_cart_id" ON "in_shopping_carts" ("shopping_cart_id")[0m
+  [1m[35m (110.8ms)[0m  CREATE TABLE "my_emails" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "ip" varchar, "state" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (133.5ms)[0m  [1mCREATE TABLE "my_payments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "ip" varchar, "status" varchar, "fee" decimal(6,2), "paypal_id" varchar, "total" decimal(9,2), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (110.4ms)[0m  CREATE TABLE "products" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "pricing" integer, "description" text, "user_id" integer, "avatar_file_name" varchar, "avatar_content_type" varchar, "avatar_file_size" integer, "avatar_updated_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (110.9ms)[0m  [1mCREATE  INDEX "index_products_on_user_id" ON "products" ("user_id")[0m
+  [1m[35m (119.3ms)[0m  CREATE TABLE "shopping_carts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "status" integer DEFAULT 0, "ip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (110.1ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (110.9ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36m (0.2ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (121.3ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36m (119.8ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (133.2ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.2ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (144.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160904204217')
+  [1m[36m (144.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160828175131')[0m
+  [1m[35m (144.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160828223949')
+  [1m[36m (135.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160904171130')[0m
+  [1m[35m (133.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160904173221')
+  [1m[36m (111.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160901004526')[0m
+  [1m[35m (111.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160829012238')
+  [1m[36m (111.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160904173334')[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.4ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "shopping_carts" ("ip", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["ip", "127.0.0.01"], ["created_at", "2016-09-04 21:14:37.345196"], ["updated_at", "2016-09-04 21:14:37.345196"]]
+  [1m[35m (158.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel1@hotmail.com' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "miguel1@hotmail.com"], ["encrypted_password", "$2a$04$YQePVXen5ZpD4eot99yGwuREXwK0cGM4E02OxXkH2FZ5hpwKeWV2C"], ["created_at", "2016-09-04 21:14:37.588951"], ["updated_at", "2016-09-04 21:14:37.588951"]]
+  [1m[35m (111.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "products" ("name", "pricing", "description", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "MyString"], ["pricing", 100], ["description", "MyText"], ["user_id", 1], ["created_at", "2016-09-04 21:14:37.709320"], ["updated_at", "2016-09-04 21:14:37.709320"]]
+  [1m[36m (114.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel2@hotmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["email", "miguel2@hotmail.com"], ["encrypted_password", "$2a$04$o/L0848690j6.au6zsowm.Tg1gdiN2/aeBPhNHO3kKczgLI3mvLmK"], ["created_at", "2016-09-04 21:14:37.835441"], ["updated_at", "2016-09-04 21:14:37.835441"]]
+  [1m[36m (132.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "products" ("name", "pricing", "description", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "MyString"], ["pricing", 100], ["description", "MyText"], ["user_id", 2], ["created_at", "2016-09-04 21:14:37.973934"], ["updated_at", "2016-09-04 21:14:37.973934"]]
+  [1m[35m (137.3ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel3@hotmail.com' LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "miguel3@hotmail.com"], ["encrypted_password", "$2a$04$KyNIiN0HDUUAcxTUsykcbeSqJJdQrJj2qncwgMlWruaT2vA14xmXW"], ["created_at", "2016-09-04 21:14:38.125426"], ["updated_at", "2016-09-04 21:14:38.125426"]]
+  [1m[35m (143.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "products" ("name", "pricing", "description", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "MyString"], ["pricing", 100], ["description", "MyText"], ["user_id", 3], ["created_at", "2016-09-04 21:14:38.273637"], ["updated_at", "2016-09-04 21:14:38.273637"]]
+  [1m[36m (141.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel4@hotmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["email", "miguel4@hotmail.com"], ["encrypted_password", "$2a$04$OXsZydYJi4WMT0dOSo39GeMBXOPAhRw/3y7etJO7RqoU70lTtLKfK"], ["created_at", "2016-09-04 21:14:38.428498"], ["updated_at", "2016-09-04 21:14:38.428498"]]
+  [1m[36m (119.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "products" ("name", "pricing", "description", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "MyString"], ["pricing", 100], ["description", "MyText"], ["user_id", 4], ["created_at", "2016-09-04 21:14:38.553975"], ["updated_at", "2016-09-04 21:14:38.553975"]]
+  [1m[35m (127.7ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel5@hotmail.com' LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "miguel5@hotmail.com"], ["encrypted_password", "$2a$04$jJR66FUcYxUSEoW6LdAKuOeOZBDM7YnsJhBFSNo3gY1Dc1bVWvTDy"], ["created_at", "2016-09-04 21:14:38.695797"], ["updated_at", "2016-09-04 21:14:38.695797"]]
+  [1m[35m (131.6ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "products" ("name", "pricing", "description", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "MyString"], ["pricing", 100], ["description", "MyText"], ["user_id", 5], ["created_at", "2016-09-04 21:14:38.833443"], ["updated_at", "2016-09-04 21:14:38.833443"]]
+  [1m[36m (119.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "in_shopping_carts" ("product_id", "shopping_cart_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["product_id", 1], ["shopping_cart_id", 1], ["created_at", "2016-09-04 21:14:38.979492"], ["updated_at", "2016-09-04 21:14:38.979492"]]
+  [1m[35m (140.5ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "in_shopping_carts" ("product_id", "shopping_cart_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["product_id", 2], ["shopping_cart_id", 1], ["created_at", "2016-09-04 21:14:39.126074"], ["updated_at", "2016-09-04 21:14:39.126074"]]
+  [1m[36m (139.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "in_shopping_carts" ("product_id", "shopping_cart_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["product_id", 3], ["shopping_cart_id", 1], ["created_at", "2016-09-04 21:14:39.271276"], ["updated_at", "2016-09-04 21:14:39.271276"]]
+  [1m[35m (113.1ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "in_shopping_carts" ("product_id", "shopping_cart_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["product_id", 4], ["shopping_cart_id", 1], ["created_at", "2016-09-04 21:14:39.404876"], ["updated_at", "2016-09-04 21:14:39.404876"]]
+  [1m[36m (139.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "in_shopping_carts" ("product_id", "shopping_cart_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["product_id", 5], ["shopping_cart_id", 1], ["created_at", "2016-09-04 21:14:39.549882"], ["updated_at", "2016-09-04 21:14:39.549882"]]
+  [1m[35m (150.6ms)[0m  commit transaction
+  [1m[36m (99.7ms)[0m  [1mCREATE TABLE "attachments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "product_id" integer, "file_file_name" varchar, "file_content_type" varchar, "file_file_size" integer, "file_updated_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.2ms)[0m  select sqlite_version(*)
+  [1m[36m (99.2ms)[0m  [1mCREATE  INDEX "index_attachments_on_product_id" ON "attachments" ("product_id")[0m
+  [1m[35m (110.7ms)[0m  CREATE TABLE "in_shopping_carts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "product_id" integer, "shopping_cart_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (121.7ms)[0m  [1mCREATE  INDEX "index_in_shopping_carts_on_product_id" ON "in_shopping_carts" ("product_id")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_in_shopping_carts_on_product_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_in_shopping_carts_on_product_id' AND type='index'
+
+  [1m[36m (121.6ms)[0m  [1mCREATE  INDEX "index_in_shopping_carts_on_shopping_cart_id" ON "in_shopping_carts" ("shopping_cart_id")[0m
+  [1m[35m (144.8ms)[0m  CREATE TABLE "my_emails" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "ip" varchar, "state" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (120.4ms)[0m  [1mCREATE TABLE "my_payments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "ip" varchar, "status" varchar, "fee" decimal(6,2), "paypal_id" varchar, "total" decimal(9,2), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (166.9ms)[0m  CREATE TABLE "products" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "pricing" integer, "description" text, "user_id" integer, "avatar_file_name" varchar, "avatar_content_type" varchar, "avatar_file_size" integer, "avatar_updated_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (109.7ms)[0m  [1mCREATE  INDEX "index_products_on_user_id" ON "products" ("user_id")[0m
+  [1m[35m (106.8ms)[0m  CREATE TABLE "shopping_carts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "status" integer DEFAULT 0, "ip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (211.6ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (154.3ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (145.8ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36m (143.1ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (153.9ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.2ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (144.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160904204217')
+  [1m[36m (156.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160828175131')[0m
+  [1m[35m (156.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160828223949')
+  [1m[36m (133.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160904171130')[0m
+  [1m[35m (156.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160904173221')
+  [1m[36m (144.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160901004526')[0m
+  [1m[35m (133.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160829012238')
+  [1m[36m (133.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160904173334')[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "shopping_carts" ("ip", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["ip", "127.0.0.01"], ["created_at", "2016-09-04 21:15:41.181135"], ["updated_at", "2016-09-04 21:15:41.181135"]]
+  [1m[35m (183.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel1@hotmail.com' LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "miguel1@hotmail.com"], ["encrypted_password", "$2a$04$/9dVPSxTon36yeRdHSdsP.hPsnSyj0rsdKjF8LXWs.X.gualHxCDO"], ["created_at", "2016-09-04 21:15:41.432685"], ["updated_at", "2016-09-04 21:15:41.432685"]]
+  [1m[35m (113.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "products" ("name", "pricing", "description", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "MyString"], ["pricing", 100], ["description", "MyText"], ["user_id", 1], ["created_at", "2016-09-04 21:15:41.556239"], ["updated_at", "2016-09-04 21:15:41.556239"]]
+  [1m[36m (113.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel2@hotmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["email", "miguel2@hotmail.com"], ["encrypted_password", "$2a$04$q3UacBg44b6HyRsMrz.ef.of/kP7S7KDZwr96jmGsq20Z9xbVDhA2"], ["created_at", "2016-09-04 21:15:41.677611"], ["updated_at", "2016-09-04 21:15:41.677611"]]
+  [1m[36m (139.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "products" ("name", "pricing", "description", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "MyString"], ["pricing", 100], ["description", "MyText"], ["user_id", 2], ["created_at", "2016-09-04 21:15:41.819753"], ["updated_at", "2016-09-04 21:15:41.819753"]]
+  [1m[35m (108.6ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel3@hotmail.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "miguel3@hotmail.com"], ["encrypted_password", "$2a$04$xC/wIlzFb07XDwbmt4O6N.T9C9fngNoTfVP3.Yw0lPcl/0WuW71gO"], ["created_at", "2016-09-04 21:15:41.935915"], ["updated_at", "2016-09-04 21:15:41.935915"]]
+  [1m[35m (126.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "products" ("name", "pricing", "description", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "MyString"], ["pricing", 100], ["description", "MyText"], ["user_id", 3], ["created_at", "2016-09-04 21:15:42.065539"], ["updated_at", "2016-09-04 21:15:42.065539"]]
+  [1m[36m (108.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel4@hotmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["email", "miguel4@hotmail.com"], ["encrypted_password", "$2a$04$UFsUxj52fEXx88/.q/PlBOtUi/XP54QQ0lnTQLMz/aNcDPz4VNLs."], ["created_at", "2016-09-04 21:15:42.181311"], ["updated_at", "2016-09-04 21:15:42.181311"]]
+  [1m[36m (126.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "products" ("name", "pricing", "description", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "MyString"], ["pricing", 100], ["description", "MyText"], ["user_id", 4], ["created_at", "2016-09-04 21:15:42.311683"], ["updated_at", "2016-09-04 21:15:42.311683"]]
+  [1m[35m (142.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel5@hotmail.com' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "miguel5@hotmail.com"], ["encrypted_password", "$2a$04$wrR4DLbNFBVQFsbbCLZ0..Sk3TnCvDPBYqCkNA7sBy7gbrhR6P5Am"], ["created_at", "2016-09-04 21:15:42.462358"], ["updated_at", "2016-09-04 21:15:42.462358"]]
+  [1m[35m (226.4ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "products" ("name", "pricing", "description", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "MyString"], ["pricing", 100], ["description", "MyText"], ["user_id", 5], ["created_at", "2016-09-04 21:15:42.693079"], ["updated_at", "2016-09-04 21:15:42.693079"]]
+  [1m[36m (273.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "in_shopping_carts" ("product_id", "shopping_cart_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["product_id", 1], ["shopping_cart_id", 1], ["created_at", "2016-09-04 21:15:42.985817"], ["updated_at", "2016-09-04 21:15:42.985817"]]
+  [1m[35m (137.0ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "in_shopping_carts" ("product_id", "shopping_cart_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["product_id", 2], ["shopping_cart_id", 1], ["created_at", "2016-09-04 21:15:43.127325"], ["updated_at", "2016-09-04 21:15:43.127325"]]
+  [1m[36m (152.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "in_shopping_carts" ("product_id", "shopping_cart_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["product_id", 3], ["shopping_cart_id", 1], ["created_at", "2016-09-04 21:15:43.297986"], ["updated_at", "2016-09-04 21:15:43.297986"]]
+  [1m[35m (116.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "in_shopping_carts" ("product_id", "shopping_cart_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["product_id", 4], ["shopping_cart_id", 1], ["created_at", "2016-09-04 21:15:43.417857"], ["updated_at", "2016-09-04 21:15:43.417857"]]
+  [1m[36m (118.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "in_shopping_carts" ("product_id", "shopping_cart_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["product_id", 5], ["shopping_cart_id", 1], ["created_at", "2016-09-04 21:15:43.540266"], ["updated_at", "2016-09-04 21:15:43.540266"]]
+  [1m[35m (120.1ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "shopping_carts" ("ip", "created_at", "updated_at") VALUES (?, ?, ?)  [["ip", "127.0.0.01"], ["created_at", "2016-09-04 21:17:22.614532"], ["updated_at", "2016-09-04 21:17:22.614532"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "shopping_carts" SET "status" = ?, "updated_at" = ? WHERE "shopping_carts"."id" = ?[0m  [["status", 1], ["updated_at", "2016-09-04 21:17:22.621500"], ["id", 2]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "shopping_carts" ("ip", "created_at", "updated_at") VALUES (?, ?, ?)  [["ip", "127.0.0.01"], ["created_at", "2016-09-04 21:17:22.629578"], ["updated_at", "2016-09-04 21:17:22.629578"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel1@hotmail.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[36m (163.0ms)[0m  [1mCREATE TABLE "attachments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "product_id" integer, "file_file_name" varchar, "file_content_type" varchar, "file_file_size" integer, "file_updated_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.3ms)[0m  select sqlite_version(*)
+  [1m[36m (109.5ms)[0m  [1mCREATE  INDEX "index_attachments_on_product_id" ON "attachments" ("product_id")[0m
+  [1m[35m (121.7ms)[0m  CREATE TABLE "in_shopping_carts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "product_id" integer, "shopping_cart_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (188.8ms)[0m  [1mCREATE  INDEX "index_in_shopping_carts_on_product_id" ON "in_shopping_carts" ("product_id")[0m
+  [1m[35m (0.3ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_in_shopping_carts_on_product_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_in_shopping_carts_on_product_id' AND type='index'
+
+  [1m[36m (153.8ms)[0m  [1mCREATE  INDEX "index_in_shopping_carts_on_shopping_cart_id" ON "in_shopping_carts" ("shopping_cart_id")[0m
+  [1m[35m (132.2ms)[0m  CREATE TABLE "my_emails" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "ip" varchar, "state" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (133.2ms)[0m  [1mCREATE TABLE "my_payments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "ip" varchar, "status" varchar, "fee" decimal(6,2), "paypal_id" varchar, "total" decimal(9,2), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (155.4ms)[0m  CREATE TABLE "products" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "pricing" integer, "description" text, "user_id" integer, "avatar_file_name" varchar, "avatar_content_type" varchar, "avatar_file_size" integer, "avatar_updated_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (133.4ms)[0m  [1mCREATE  INDEX "index_products_on_user_id" ON "products" ("user_id")[0m
+  [1m[35m (138.5ms)[0m  CREATE TABLE "shopping_carts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "status" integer DEFAULT 0, "ip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (153.7ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (143.6ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36m (0.3ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (144.6ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36m (151.4ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (178.4ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.5ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (153.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160904204217')
+  [1m[36m (133.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160828175131')[0m
+  [1m[35m (156.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160828223949')
+  [1m[36m (133.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160904171130')[0m
+  [1m[35m (122.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160904173221')
+  [1m[36m (122.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160901004526')[0m
+  [1m[35m (122.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160829012238')
+  [1m[36m (122.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160904173334')[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "shopping_carts" ("ip", "created_at", "updated_at") VALUES (?, ?, ?)  [["ip", "127.0.0.01"], ["created_at", "2016-09-04 21:17:58.139977"], ["updated_at", "2016-09-04 21:17:58.139977"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "shopping_carts" SET "status" = ?, "updated_at" = ? WHERE "shopping_carts"."id" = ?[0m  [["status", 1], ["updated_at", "2016-09-04 21:17:58.144769"], ["id", 1]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "shopping_carts" ("ip", "created_at", "updated_at") VALUES (?, ?, ?)  [["ip", "127.0.0.01"], ["created_at", "2016-09-04 21:17:58.152768"], ["updated_at", "2016-09-04 21:17:58.152768"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel1@hotmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["email", "miguel1@hotmail.com"], ["encrypted_password", "$2a$04$BCKIro2j9Tahgwqyg5Sez.yc1mWG/PsorSS5ldNwm8OHSiEA0FLEm"], ["created_at", "2016-09-04 21:17:58.203244"], ["updated_at", "2016-09-04 21:17:58.203244"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "products" ("name", "pricing", "description", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "MyString"], ["pricing", 100], ["description", "MyText"], ["user_id", 1], ["created_at", "2016-09-04 21:17:58.211950"], ["updated_at", "2016-09-04 21:17:58.211950"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel2@hotmail.com' LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "miguel2@hotmail.com"], ["encrypted_password", "$2a$04$qa5bWL5GT0WbNYpY/faMIup.ZMbxcluaTG/qf58DGDG64rD0tsY1y"], ["created_at", "2016-09-04 21:17:58.218352"], ["updated_at", "2016-09-04 21:17:58.218352"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "products" ("name", "pricing", "description", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "MyString"], ["pricing", 100], ["description", "MyText"], ["user_id", 2], ["created_at", "2016-09-04 21:17:58.220740"], ["updated_at", "2016-09-04 21:17:58.220740"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel3@hotmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["email", "miguel3@hotmail.com"], ["encrypted_password", "$2a$04$rgSu1qzjFGO4gM81V0hfxuHCOgWQmt8GkTV5EzADRW5RuCeWOVJ0y"], ["created_at", "2016-09-04 21:17:58.226418"], ["updated_at", "2016-09-04 21:17:58.226418"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "products" ("name", "pricing", "description", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "MyString"], ["pricing", 100], ["description", "MyText"], ["user_id", 3], ["created_at", "2016-09-04 21:17:58.228732"], ["updated_at", "2016-09-04 21:17:58.228732"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel4@hotmail.com' LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "miguel4@hotmail.com"], ["encrypted_password", "$2a$04$vdO2CEAsyz9nTlr.NkDPgeaAJbNIbWCC72nNA397G7Zm.V5kIquh6"], ["created_at", "2016-09-04 21:17:58.234356"], ["updated_at", "2016-09-04 21:17:58.234356"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "products" ("name", "pricing", "description", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "MyString"], ["pricing", 100], ["description", "MyText"], ["user_id", 4], ["created_at", "2016-09-04 21:17:58.236600"], ["updated_at", "2016-09-04 21:17:58.236600"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel5@hotmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["email", "miguel5@hotmail.com"], ["encrypted_password", "$2a$04$JpFbSXCE.rzVEy4Pk/AijOFW4BBksnsK5dyWppfWivxkkxnn3QhHq"], ["created_at", "2016-09-04 21:17:58.242145"], ["updated_at", "2016-09-04 21:17:58.242145"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "products" ("name", "pricing", "description", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "MyString"], ["pricing", 100], ["description", "MyText"], ["user_id", 5], ["created_at", "2016-09-04 21:17:58.244395"], ["updated_at", "2016-09-04 21:17:58.244395"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "in_shopping_carts" ("product_id", "shopping_cart_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["product_id", 1], ["shopping_cart_id", 1], ["created_at", "2016-09-04 21:17:58.268933"], ["updated_at", "2016-09-04 21:17:58.268933"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "in_shopping_carts" ("product_id", "shopping_cart_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["product_id", 2], ["shopping_cart_id", 1], ["created_at", "2016-09-04 21:17:58.271674"], ["updated_at", "2016-09-04 21:17:58.271674"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "in_shopping_carts" ("product_id", "shopping_cart_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["product_id", 3], ["shopping_cart_id", 1], ["created_at", "2016-09-04 21:17:58.273790"], ["updated_at", "2016-09-04 21:17:58.273790"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "in_shopping_carts" ("product_id", "shopping_cart_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["product_id", 4], ["shopping_cart_id", 1], ["created_at", "2016-09-04 21:17:58.275833"], ["updated_at", "2016-09-04 21:17:58.275833"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "in_shopping_carts" ("product_id", "shopping_cart_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["product_id", 5], ["shopping_cart_id", 1], ["created_at", "2016-09-04 21:17:58.277904"], ["updated_at", "2016-09-04 21:17:58.277904"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "shopping_carts" ("ip", "created_at", "updated_at") VALUES (?, ?, ?)  [["ip", "127.0.0.01"], ["created_at", "2016-09-04 21:18:28.772054"], ["updated_at", "2016-09-04 21:18:28.772054"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "shopping_carts" SET "status" = ?, "updated_at" = ? WHERE "shopping_carts"."id" = ?[0m  [["status", 1], ["updated_at", "2016-09-04 21:18:28.777026"], ["id", 1]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "shopping_carts" ("ip", "created_at", "updated_at") VALUES (?, ?, ?)  [["ip", "127.0.0.01"], ["created_at", "2016-09-04 21:18:28.785131"], ["updated_at", "2016-09-04 21:18:28.785131"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel1@hotmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["email", "miguel1@hotmail.com"], ["encrypted_password", "$2a$04$Zdhu3yQjDqg1dBYsBVeksu6lL5F6YnONDDO8OAYO2UjVatTBRgewi"], ["created_at", "2016-09-04 21:18:28.835100"], ["updated_at", "2016-09-04 21:18:28.835100"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "products" ("name", "pricing", "description", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "MyString"], ["pricing", 100], ["description", "MyText"], ["user_id", 1], ["created_at", "2016-09-04 21:18:28.843541"], ["updated_at", "2016-09-04 21:18:28.843541"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel2@hotmail.com' LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "miguel2@hotmail.com"], ["encrypted_password", "$2a$04$QZw0VpC.W69yenb5hBEa0.DlthnMnX1S4V4o9ipBFtvcS.DtxosE6"], ["created_at", "2016-09-04 21:18:28.849777"], ["updated_at", "2016-09-04 21:18:28.849777"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "products" ("name", "pricing", "description", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "MyString"], ["pricing", 100], ["description", "MyText"], ["user_id", 2], ["created_at", "2016-09-04 21:18:28.852158"], ["updated_at", "2016-09-04 21:18:28.852158"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel3@hotmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["email", "miguel3@hotmail.com"], ["encrypted_password", "$2a$04$JVp6FgaBu4fx1THns4B.xOkSpHJWmaCTZdfCbEpBlUEAxGpCVJqTC"], ["created_at", "2016-09-04 21:18:28.857818"], ["updated_at", "2016-09-04 21:18:28.857818"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "products" ("name", "pricing", "description", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "MyString"], ["pricing", 100], ["description", "MyText"], ["user_id", 3], ["created_at", "2016-09-04 21:18:28.860145"], ["updated_at", "2016-09-04 21:18:28.860145"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel4@hotmail.com' LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "miguel4@hotmail.com"], ["encrypted_password", "$2a$04$m2TFQc0u/nJtS3zYwH2/FO0uWsv5pll5PBT2B3G7Y1MLplI7a6tXO"], ["created_at", "2016-09-04 21:18:28.865631"], ["updated_at", "2016-09-04 21:18:28.865631"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "products" ("name", "pricing", "description", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "MyString"], ["pricing", 100], ["description", "MyText"], ["user_id", 4], ["created_at", "2016-09-04 21:18:28.867876"], ["updated_at", "2016-09-04 21:18:28.867876"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel5@hotmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["email", "miguel5@hotmail.com"], ["encrypted_password", "$2a$04$MFnaK7EuqKg.4iUMlfJaCOuhtHJ1ajdTiohfvhXxLcuyAxzz5t7VO"], ["created_at", "2016-09-04 21:18:28.873295"], ["updated_at", "2016-09-04 21:18:28.873295"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "products" ("name", "pricing", "description", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "MyString"], ["pricing", 100], ["description", "MyText"], ["user_id", 5], ["created_at", "2016-09-04 21:18:28.875805"], ["updated_at", "2016-09-04 21:18:28.875805"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "in_shopping_carts" ("product_id", "shopping_cart_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["product_id", 1], ["shopping_cart_id", 1], ["created_at", "2016-09-04 21:18:28.898328"], ["updated_at", "2016-09-04 21:18:28.898328"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "in_shopping_carts" ("product_id", "shopping_cart_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["product_id", 2], ["shopping_cart_id", 1], ["created_at", "2016-09-04 21:18:28.901111"], ["updated_at", "2016-09-04 21:18:28.901111"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "in_shopping_carts" ("product_id", "shopping_cart_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["product_id", 3], ["shopping_cart_id", 1], ["created_at", "2016-09-04 21:18:28.903480"], ["updated_at", "2016-09-04 21:18:28.903480"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "in_shopping_carts" ("product_id", "shopping_cart_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["product_id", 4], ["shopping_cart_id", 1], ["created_at", "2016-09-04 21:18:28.905527"], ["updated_at", "2016-09-04 21:18:28.905527"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "in_shopping_carts" ("product_id", "shopping_cart_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["product_id", 5], ["shopping_cart_id", 1], ["created_at", "2016-09-04 21:18:28.907510"], ["updated_at", "2016-09-04 21:18:28.907510"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "shopping_carts" ("ip", "created_at", "updated_at") VALUES (?, ?, ?)  [["ip", "127.0.0.01"], ["created_at", "2016-09-04 21:19:15.057210"], ["updated_at", "2016-09-04 21:19:15.057210"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "shopping_carts" SET "status" = ?, "updated_at" = ? WHERE "shopping_carts"."id" = ?[0m  [["status", 1], ["updated_at", "2016-09-04 21:19:15.061892"], ["id", 1]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "shopping_carts" ("ip", "created_at", "updated_at") VALUES (?, ?, ?)  [["ip", "127.0.0.01"], ["created_at", "2016-09-04 21:19:15.069674"], ["updated_at", "2016-09-04 21:19:15.069674"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel1@hotmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["email", "miguel1@hotmail.com"], ["encrypted_password", "$2a$04$MgumJmj.MA.eWFhX2FvWF.iNwjCA5UbOlm9HZ4a93Xsp03Z/rcMKK"], ["created_at", "2016-09-04 21:19:15.119523"], ["updated_at", "2016-09-04 21:19:15.119523"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "products" ("name", "pricing", "description", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "MyString"], ["pricing", 100], ["description", "MyText"], ["user_id", 1], ["created_at", "2016-09-04 21:19:15.127970"], ["updated_at", "2016-09-04 21:19:15.127970"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel2@hotmail.com' LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "miguel2@hotmail.com"], ["encrypted_password", "$2a$04$oQIe93LZl190pv1enSMrc.rNE7IPFbANCgMfSa3uvqmOB7PlbVD4u"], ["created_at", "2016-09-04 21:19:15.134273"], ["updated_at", "2016-09-04 21:19:15.134273"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "products" ("name", "pricing", "description", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "MyString"], ["pricing", 100], ["description", "MyText"], ["user_id", 2], ["created_at", "2016-09-04 21:19:15.136674"], ["updated_at", "2016-09-04 21:19:15.136674"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel3@hotmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["email", "miguel3@hotmail.com"], ["encrypted_password", "$2a$04$sJ7PopsyybfbR0zTnsZ84.PwO.klli/r3Gii6R82d/6r/iK/QwZ9m"], ["created_at", "2016-09-04 21:19:15.142238"], ["updated_at", "2016-09-04 21:19:15.142238"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "products" ("name", "pricing", "description", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "MyString"], ["pricing", 100], ["description", "MyText"], ["user_id", 3], ["created_at", "2016-09-04 21:19:15.144506"], ["updated_at", "2016-09-04 21:19:15.144506"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel4@hotmail.com' LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "miguel4@hotmail.com"], ["encrypted_password", "$2a$04$UQ8699jVazWZsAvsyyRkoOKfRyPBeFbkKZGJquigDQ4L3ifz04Aba"], ["created_at", "2016-09-04 21:19:15.149936"], ["updated_at", "2016-09-04 21:19:15.149936"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "products" ("name", "pricing", "description", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "MyString"], ["pricing", 100], ["description", "MyText"], ["user_id", 4], ["created_at", "2016-09-04 21:19:15.152323"], ["updated_at", "2016-09-04 21:19:15.152323"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel5@hotmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["email", "miguel5@hotmail.com"], ["encrypted_password", "$2a$04$PYD1NLGgRf9Rs5MpyCXrNeySKThe7ip0MgpfEbKVoLbHjeG7YkjgO"], ["created_at", "2016-09-04 21:19:15.157724"], ["updated_at", "2016-09-04 21:19:15.157724"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "products" ("name", "pricing", "description", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "MyString"], ["pricing", 100], ["description", "MyText"], ["user_id", 5], ["created_at", "2016-09-04 21:19:15.159916"], ["updated_at", "2016-09-04 21:19:15.159916"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "in_shopping_carts" ("product_id", "shopping_cart_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["product_id", 1], ["shopping_cart_id", 1], ["created_at", "2016-09-04 21:19:15.182960"], ["updated_at", "2016-09-04 21:19:15.182960"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "in_shopping_carts" ("product_id", "shopping_cart_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["product_id", 2], ["shopping_cart_id", 1], ["created_at", "2016-09-04 21:19:15.185492"], ["updated_at", "2016-09-04 21:19:15.185492"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "in_shopping_carts" ("product_id", "shopping_cart_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["product_id", 3], ["shopping_cart_id", 1], ["created_at", "2016-09-04 21:19:15.187590"], ["updated_at", "2016-09-04 21:19:15.187590"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "in_shopping_carts" ("product_id", "shopping_cart_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["product_id", 4], ["shopping_cart_id", 1], ["created_at", "2016-09-04 21:19:15.189561"], ["updated_at", "2016-09-04 21:19:15.189561"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "in_shopping_carts" ("product_id", "shopping_cart_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["product_id", 5], ["shopping_cart_id", 1], ["created_at", "2016-09-04 21:19:15.191780"], ["updated_at", "2016-09-04 21:19:15.191780"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mProduct Load (0.3ms)[0m  SELECT "products".* FROM "products" INNER JOIN "in_shopping_carts" ON "products"."id" = "in_shopping_carts"."product_id" WHERE "in_shopping_carts"."shopping_cart_id" = ?  [["shopping_cart_id", 1]]
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.3ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "shopping_carts" ("ip", "created_at", "updated_at") VALUES (?, ?, ?)  [["ip", "127.0.0.01"], ["created_at", "2016-09-04 21:19:23.620118"], ["updated_at", "2016-09-04 21:19:23.620118"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "shopping_carts" SET "status" = ?, "updated_at" = ? WHERE "shopping_carts"."id" = ?[0m  [["status", 1], ["updated_at", "2016-09-04 21:19:23.625607"], ["id", 1]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "shopping_carts" ("ip", "created_at", "updated_at") VALUES (?, ?, ?)  [["ip", "127.0.0.01"], ["created_at", "2016-09-04 21:19:23.633567"], ["updated_at", "2016-09-04 21:19:23.633567"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel1@hotmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["email", "miguel1@hotmail.com"], ["encrypted_password", "$2a$04$.Ax7tpGR0DwdnYhpsb6Apu/L5YQohoPscaShIV91OMDPKd.XpLk3q"], ["created_at", "2016-09-04 21:19:23.690574"], ["updated_at", "2016-09-04 21:19:23.690574"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "products" ("name", "pricing", "description", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "MyString"], ["pricing", 100], ["description", "MyText"], ["user_id", 1], ["created_at", "2016-09-04 21:19:23.700382"], ["updated_at", "2016-09-04 21:19:23.700382"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel2@hotmail.com' LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "miguel2@hotmail.com"], ["encrypted_password", "$2a$04$0WI3Kp.j2khFBgJZKN6EsOk8odfYmjxGbkMAGCySe6LWGQDZSArRO"], ["created_at", "2016-09-04 21:19:23.707770"], ["updated_at", "2016-09-04 21:19:23.707770"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "products" ("name", "pricing", "description", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "MyString"], ["pricing", 100], ["description", "MyText"], ["user_id", 2], ["created_at", "2016-09-04 21:19:23.710821"], ["updated_at", "2016-09-04 21:19:23.710821"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel3@hotmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["email", "miguel3@hotmail.com"], ["encrypted_password", "$2a$04$iBUXAoUu7xQZTdBEH76QCONrXWDfAy16Bl7BNwPFlyGPl1zgQiZHC"], ["created_at", "2016-09-04 21:19:23.716589"], ["updated_at", "2016-09-04 21:19:23.716589"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "products" ("name", "pricing", "description", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "MyString"], ["pricing", 100], ["description", "MyText"], ["user_id", 3], ["created_at", "2016-09-04 21:19:23.719662"], ["updated_at", "2016-09-04 21:19:23.719662"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel4@hotmail.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "miguel4@hotmail.com"], ["encrypted_password", "$2a$04$qXocE0AgoyvM5k61w8biAODgYHgPtjM4gf3/cTqvD1YyOOwnoCDMm"], ["created_at", "2016-09-04 21:19:23.727263"], ["updated_at", "2016-09-04 21:19:23.727263"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "products" ("name", "pricing", "description", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "MyString"], ["pricing", 100], ["description", "MyText"], ["user_id", 4], ["created_at", "2016-09-04 21:19:23.730401"], ["updated_at", "2016-09-04 21:19:23.730401"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel5@hotmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["email", "miguel5@hotmail.com"], ["encrypted_password", "$2a$04$xyoaOBfSVHOLYLy73EX3E.oKvWilN0zhhpxfs1Xpb9zGOApVTRK76"], ["created_at", "2016-09-04 21:19:23.737460"], ["updated_at", "2016-09-04 21:19:23.737460"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "products" ("name", "pricing", "description", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "MyString"], ["pricing", 100], ["description", "MyText"], ["user_id", 5], ["created_at", "2016-09-04 21:19:23.740356"], ["updated_at", "2016-09-04 21:19:23.740356"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "in_shopping_carts" ("product_id", "shopping_cart_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["product_id", 1], ["shopping_cart_id", 1], ["created_at", "2016-09-04 21:19:23.766022"], ["updated_at", "2016-09-04 21:19:23.766022"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "in_shopping_carts" ("product_id", "shopping_cart_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["product_id", 2], ["shopping_cart_id", 1], ["created_at", "2016-09-04 21:19:23.769874"], ["updated_at", "2016-09-04 21:19:23.769874"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "in_shopping_carts" ("product_id", "shopping_cart_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["product_id", 3], ["shopping_cart_id", 1], ["created_at", "2016-09-04 21:19:23.772751"], ["updated_at", "2016-09-04 21:19:23.772751"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "in_shopping_carts" ("product_id", "shopping_cart_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["product_id", 4], ["shopping_cart_id", 1], ["created_at", "2016-09-04 21:19:23.775710"], ["updated_at", "2016-09-04 21:19:23.775710"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "in_shopping_carts" ("product_id", "shopping_cart_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["product_id", 5], ["shopping_cart_id", 1], ["created_at", "2016-09-04 21:19:23.778558"], ["updated_at", "2016-09-04 21:19:23.778558"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mProduct Load (0.3ms)[0m  SELECT "products".* FROM "products" INNER JOIN "in_shopping_carts" ON "products"."id" = "in_shopping_carts"."product_id" WHERE "in_shopping_carts"."shopping_cart_id" = ?  [["shopping_cart_id", 1]]
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "shopping_carts" ("ip", "created_at", "updated_at") VALUES (?, ?, ?)  [["ip", "127.0.0.01"], ["created_at", "2016-09-04 21:19:51.243409"], ["updated_at", "2016-09-04 21:19:51.243409"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "shopping_carts" SET "status" = ?, "updated_at" = ? WHERE "shopping_carts"."id" = ?[0m  [["status", 1], ["updated_at", "2016-09-04 21:19:51.248489"], ["id", 1]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "shopping_carts" ("ip", "created_at", "updated_at") VALUES (?, ?, ?)  [["ip", "127.0.0.01"], ["created_at", "2016-09-04 21:19:51.260223"], ["updated_at", "2016-09-04 21:19:51.260223"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel1@hotmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["email", "miguel1@hotmail.com"], ["encrypted_password", "$2a$04$Him7jmUo8ESZkABnQeDIIOHHHL8pxyRahAUglb4fbnB8Gtxp3WP.."], ["created_at", "2016-09-04 21:19:51.317133"], ["updated_at", "2016-09-04 21:19:51.317133"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "products" ("name", "pricing", "description", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "MyString"], ["pricing", 100], ["description", "MyText"], ["user_id", 1], ["created_at", "2016-09-04 21:19:51.327831"], ["updated_at", "2016-09-04 21:19:51.327831"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel2@hotmail.com' LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "miguel2@hotmail.com"], ["encrypted_password", "$2a$04$7/T2P4tda8MongB7TPaXJOSyUG/6WqUqzlVzMttp584FEQjbiYCD6"], ["created_at", "2016-09-04 21:19:51.335500"], ["updated_at", "2016-09-04 21:19:51.335500"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "products" ("name", "pricing", "description", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "MyString"], ["pricing", 100], ["description", "MyText"], ["user_id", 2], ["created_at", "2016-09-04 21:19:51.338040"], ["updated_at", "2016-09-04 21:19:51.338040"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel3@hotmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["email", "miguel3@hotmail.com"], ["encrypted_password", "$2a$04$kpmEe1CpLY.tHC37jdpcBO0hDrcn4K0Gn75CES2OSoUYcFdpOl7zm"], ["created_at", "2016-09-04 21:19:51.343644"], ["updated_at", "2016-09-04 21:19:51.343644"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "products" ("name", "pricing", "description", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "MyString"], ["pricing", 100], ["description", "MyText"], ["user_id", 3], ["created_at", "2016-09-04 21:19:51.345941"], ["updated_at", "2016-09-04 21:19:51.345941"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel4@hotmail.com' LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "miguel4@hotmail.com"], ["encrypted_password", "$2a$04$cWqWyH7b5Nti2hOXI8aKu.mhta56XIpxDxootkCXpToAfQZDUPtZy"], ["created_at", "2016-09-04 21:19:51.351884"], ["updated_at", "2016-09-04 21:19:51.351884"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "products" ("name", "pricing", "description", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "MyString"], ["pricing", 100], ["description", "MyText"], ["user_id", 4], ["created_at", "2016-09-04 21:19:51.354427"], ["updated_at", "2016-09-04 21:19:51.354427"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'miguel5@hotmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["email", "miguel5@hotmail.com"], ["encrypted_password", "$2a$04$lS/54r4KfoGTiTG6N3jvc.9ZIVcT/SXI0wpkS4EETZql5TPRcEeei"], ["created_at", "2016-09-04 21:19:51.359826"], ["updated_at", "2016-09-04 21:19:51.359826"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "products" ("name", "pricing", "description", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "MyString"], ["pricing", 100], ["description", "MyText"], ["user_id", 5], ["created_at", "2016-09-04 21:19:51.362663"], ["updated_at", "2016-09-04 21:19:51.362663"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "in_shopping_carts" ("product_id", "shopping_cart_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["product_id", 1], ["shopping_cart_id", 1], ["created_at", "2016-09-04 21:19:51.388513"], ["updated_at", "2016-09-04 21:19:51.388513"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "in_shopping_carts" ("product_id", "shopping_cart_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["product_id", 2], ["shopping_cart_id", 1], ["created_at", "2016-09-04 21:19:51.391057"], ["updated_at", "2016-09-04 21:19:51.391057"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "in_shopping_carts" ("product_id", "shopping_cart_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["product_id", 3], ["shopping_cart_id", 1], ["created_at", "2016-09-04 21:19:51.393206"], ["updated_at", "2016-09-04 21:19:51.393206"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "in_shopping_carts" ("product_id", "shopping_cart_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["product_id", 4], ["shopping_cart_id", 1], ["created_at", "2016-09-04 21:19:51.395204"], ["updated_at", "2016-09-04 21:19:51.395204"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "in_shopping_carts" ("product_id", "shopping_cart_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["product_id", 5], ["shopping_cart_id", 1], ["created_at", "2016-09-04 21:19:51.397157"], ["updated_at", "2016-09-04 21:19:51.397157"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("products"."pricing") FROM "products" INNER JOIN "in_shopping_carts" ON "products"."id" = "in_shopping_carts"."product_id" WHERE "in_shopping_carts"."shopping_cart_id" = ?  [["shopping_cart_id", 1]]
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m

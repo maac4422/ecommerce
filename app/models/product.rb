@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: products
+#
+#  id                  :integer          not null, primary key
+#  name                :string
+#  pricing             :integer
+#  description         :text
+#  user_id             :integer
+#  avatar_file_name    :string
+#  avatar_content_type :string
+#  avatar_file_size    :integer
+#  avatar_updated_at   :datetime
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#
+
 class Product < ActiveRecord::Base
   belongs_to :user
   has_many :attachments
@@ -7,4 +24,8 @@ class Product < ActiveRecord::Base
 
   has_attached_file :avatar, styles: { medium: "300x300", thumb: "100x100"}, default_url: "missing.png"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
+
+  def paypal_form
+  	{name: name,sku: :item, price: (pricing / 100),currency:"USD",quantity:1}
+  end
 end

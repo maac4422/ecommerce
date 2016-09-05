@@ -17,6 +17,7 @@
 				%h3.teal-text.bold.normal
 					Tamaño:
 					%span.grey-text 2gb
+				=render "in_shopping_carts/form", product: @product
 		%section
 			%h3.green-text.bold.normal Descripción del producto
 			%p= @product.description
