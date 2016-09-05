@@ -42,4 +42,13 @@ class Stores::Paypal
 		})
 		return self.payment
 	end
+
+	#metodo que recibe un bloque
+	def self.checkout(payer_id,payment_id,&block)
+		payment = Payment.find(payment_id)
+		if payment.execute(payer_id)
+			yield if block_given?
+		end
+		
+	end
 end

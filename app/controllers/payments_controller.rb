@@ -1,6 +1,5 @@
 class PaymentsController < ApplicationController
 
-	include PayPal::SDK::REST
 
 	def create
 	  	paypal_helper = Stores::Paypal.new(@shopping_cart.total,
@@ -21,18 +20,16 @@ class PaymentsController < ApplicationController
 
 	def checkout
 		@my_payment = MyPayment.find_by(paypal_id: params[:paymentId])
-
+		
 		if @my_payment.nil?
 			redirect_to carrito_path
 		else
-			payment = Payment.find(@my_payment.paypal_id)
-			if payment.execute(payer_id: params[:PayerID])
+			Stores::Paypal.checkout(params[:PayerID],params[:paymentId]) do
 				@my_payment.pay!
 				redirect_to carrito_path, notice: "Se proceso correctamente el pago."
-			else
-				redirect_to carrito_path, notice: "Hubo un error al procesar el pago."	
+				return
 			end
+			redirect_to carrito_path, notice: "Hubo un error al procesar el pago."	
 		end
-		
 	end
 end
